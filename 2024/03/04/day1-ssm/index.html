@@ -27,30 +27,33 @@
 <meta property="og:site_name" content="Purin&#39;s blog">
 <meta property="og:description" content="spring framework spring:技术栈全家桶 spring framework：基础框架  Ioc容器&#x2F;核心容器Ioc（spring充当组件的管理） 组件：可复用的java对象(bean) –&gt;人不用创建了，写好配置文件就行  只有交给spring管理的对象(加入Ioc容器中)，才能享受spring framework的其他功能(AOP，声明事务管理等)   容器简">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240304190111819.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240304171221270.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240306073758998.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240306075235829.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240306075528587.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240306083330570.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240306162043779.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240306163456788.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240306165253839.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307091055503.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307091326385.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307101345528.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307105203326.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307111214215.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307111723498.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307112056720.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307112400989.png">
-<meta property="og:image" content="https://spuriny.github.io/2024/03/04/images/image-20240307165644701.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240304190111819.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240304171221270.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240306073758998.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240306075235829.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240306075528587.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240306083330570.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240306162043779.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240306163456788.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240306165253839.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307091055503.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307091326385.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307101345528.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307105203326.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307111214215.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307111723498.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307112056720.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307112400989.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307165644701.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307192215200.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307192523523.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240307183833764.png">
 <meta property="article:published_time" content="2024-03-04T07:50:12.000Z">
-<meta property="article:modified_time" content="2024-03-07T09:43:30.531Z">
+<meta property="article:modified_time" content="2024-03-07T11:38:30.760Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ssm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://spuriny.github.io/2024/03/04/images/image-20240304190111819.png">
+<meta name="twitter:image" content="https://spuriny.github.io/images/image-20240304190111819.png">
   
     <link rel="alternate" href="/atom.xml" title="Purin's blog" type="application/atom+xml">
   
@@ -302,7 +305,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            6.9k words 
+            8.4k words 
           </div>
         </div>
         
@@ -346,7 +349,7 @@
 <ul>
 <li><code>ClassPathXmlApplicationContext</code> ：通过读取类路径下的<strong>xml配置文件****创建ioc容器对象</strong><ul>
 <li>类路径：src下或resources下</li>
-<li>如图，compile后，即为类路径下的xml<img src="../images/image-20240304190111819.png" alt="image-20240304190111819" style="zoom:33%;" /></li>
+<li>如图，compile后，即为类路径下的xml<img src="/images/image-20240304190111819.png" alt="image-20240304190111819" style="zoom:33%;" /></li>
 </ul>
 </li>
 <li><code>AnnotationConfigApplicationContext</code>:通过读取<strong>java配置类</strong>创<strong>建ioc容器对象</strong></li>
@@ -382,7 +385,7 @@
 <li>bean存储到了ioc容器中</li>
 </ul>
 <p>3.在<strong>java代码中获取ioc容器里的bean</strong></p>
-<img src="../images/image-20240304171221270.png" alt="image-20240304171221270" style="zoom:50%;" />
+<img src="/images/image-20240304171221270.png" alt="image-20240304171221270" style="zoom:50%;" />
 
 <h5 id="实例化对象"><a href="#实例化对象" class="headerlink" title="实例化对象"></a>实例化对象</h5><p>（不同实例化方式的对象 ioc配置方式也不同）</p>
 <ul>
@@ -401,9 +404,9 @@
 <h5 id="创建子工程"><a href="#创建子工程" class="headerlink" title="创建子工程"></a>创建子工程</h5><p>在父工程上new module（子工程的pom自动继承了父工程的pom</p>
 <hr>
 <p>day2-2024年3月6日*<!--2024年3月6日-->*</p>
-<h5 id="bean周期方法"><a href="#bean周期方法" class="headerlink" title="bean周期方法"></a>bean周期方法</h5><img src="../images/image-20240306073758998.png" alt="image-20240306073758998" style="zoom:50%;" />
+<h5 id="bean周期方法"><a href="#bean周期方法" class="headerlink" title="bean周期方法"></a>bean周期方法</h5><img src="/images/image-20240306073758998.png" alt="image-20240306073758998" style="zoom:50%;" />
 
-<h5 id="FactoryBean工厂bean接口"><a href="#FactoryBean工厂bean接口" class="headerlink" title="FactoryBean工厂bean接口"></a>FactoryBean工厂bean接口</h5><img src="../images/image-20240306075235829.png" alt="image-20240306075235829" style="zoom:50%;" />
+<h5 id="FactoryBean工厂bean接口"><a href="#FactoryBean工厂bean接口" class="headerlink" title="FactoryBean工厂bean接口"></a>FactoryBean工厂bean接口</h5><img src="/images/image-20240306075235829.png" alt="image-20240306075235829" style="zoom:50%;" />
 
 <ul>
 <li>在FactoryBean接口的实现类里写实例化逻辑<ul>
@@ -412,7 +415,7 @@
 <li>代理类的创建</li>
 <li>复杂对象的创建<ul>
 <li>e.g. 直接new的就是构造函数型的</li>
-<li>e.g.mybatis中<img src="../images/image-20240306075528587.png" alt="image-20240306075528587" style="zoom: 33%;" />这么复杂无法直接new，就可以用FactoryBean</li>
+<li>e.g.mybatis中<img src="/images/image-20240306075528587.png" alt="image-20240306075528587" style="zoom: 33%;" />这么复杂无法直接new，就可以用FactoryBean</li>
 </ul>
 </li>
 </ul>
@@ -437,7 +440,7 @@
 <p>2.<strong>xml</strong>告诉容器<strong>扫描哪些包</strong>下的注解</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.ioc1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
-<img src="../images/image-20240306083330570.png" alt="image-20240306083330570" style="zoom:50%;" />
+<img src="/images/image-20240306083330570.png" alt="image-20240306083330570" style="zoom:50%;" />
 
 <h5 id="注解式DI"><a href="#注解式DI" class="headerlink" title="注解式DI"></a>注解式DI</h5><h6 id="引用类型"><a href="#引用类型" class="headerlink" title="(引用类型)"></a>(引用类型)</h6><p>e.g.service调用dao层show(),</p>
 <p>Dao：</p>
@@ -476,8 +479,8 @@ private String userName;
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span><span class="comment">//表明是配置类</span></span><br><span class="line"><span class="meta">@Import(value=&#123;ConfigA.class,ConfigB.class&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JavaConfiguration</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>总结：<img src="../images/image-20240306162043779.png" alt="image-20240306162043779" style="zoom:33%;" /></p>
-<h2 id="AOP面向切面编程"><a href="#AOP面向切面编程" class="headerlink" title="AOP面向切面编程"></a>AOP面向切面编程</h2><img src="../images/image-20240306163456788.png" alt="image-20240306163456788" style="zoom:33%;" />
+<p>总结：<img src="/images/image-20240306162043779.png" alt="image-20240306162043779" style="zoom:33%;" /></p>
+<h2 id="AOP面向切面编程"><a href="#AOP面向切面编程" class="headerlink" title="AOP面向切面编程"></a>AOP面向切面编程</h2><img src="/images/image-20240306163456788.png" alt="image-20240306163456788" style="zoom:33%;" />
 
 <ul>
 <li><p><strong>代理内写非核心代码，代理调用核心代码(在目标类中)</strong></p>
@@ -491,15 +494,15 @@ private String userName;
 </ul>
 </li>
 </ul>
-<img src="../images/image-20240306165253839.png" alt="image-20240306165253839" style="zoom:33%;" />
+<img src="/images/image-20240306165253839.png" alt="image-20240306165253839" style="zoom:33%;" />
 
 <hr>
 <ul>
 <li><input disabled="" type="checkbox"> day3 2024年3月7日</li>
 </ul>
-<img src="../images/image-20240307091055503.png" alt="image-20240307091055503" style="zoom:50%;" />
+<img src="/images/image-20240307091055503.png" alt="image-20240307091055503" style="zoom:50%;" />
 
-<img src="../images/image-20240307091326385.png" alt="image-20240307091326385" style="zoom:50%;" />
+<img src="/images/image-20240307091326385.png" alt="image-20240307091326385" style="zoom:50%;" />
 
 <ul>
 <li><p>即</p>
@@ -517,7 +520,7 @@ private String userName;
 &#125;finally&#123;
     @After
 &#125;
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">&lt;u&gt;E.G. :&lt;/u&gt;</span><br><span class="line"></span><br><span class="line">目标效果如下：</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../images/image-20240307094022468.png&quot; alt=&quot;image-20240307094022468&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">- 1.先写业务代码</span><br><span class="line"></span><br><span class="line">接口：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public interface Calculator &#123;</span><br><span class="line">    public int add(int i,int j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">&lt;u&gt;E.G. :&lt;/u&gt;</span><br><span class="line"></span><br><span class="line">目标效果如下：</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;/images/image-20240307094022468.png&quot; alt=&quot;image-20240307094022468&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">- 1.先写业务代码</span><br><span class="line"></span><br><span class="line">接口：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public interface Calculator &#123;</span><br><span class="line">    public int add(int i,int j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </code></pre>
 </li>
 </ul>
@@ -543,7 +546,7 @@ private String userName;
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 增强类</span></span><br><span class="line"><span class="comment">* 存储增强代码</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@Aspect</span><span class="comment">//声明是切面</span></span><br><span class="line"><span class="meta">@Component</span><span class="comment">//增强类也要加入ioc容器</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogAdvice</span> &#123;</span><br><span class="line">    <span class="meta">@Before(&quot;execution(* aop1.impl.*.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;method-start--&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterReturning(&quot;execution(* aop1.impl.*.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">end</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;method-end--&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterThrowing(&quot;execution(* aop1.impl.*.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">error</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;method-error--&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="获取切点-目标方法-信息"><a href="#获取切点-目标方法-信息" class="headerlink" title="获取切点(目标方法)信息"></a>获取切点(目标方法)信息</h3><img src="../images/image-20240307101345528.png" alt="image-20240307101345528" style="zoom: 50%;" />
+<h3 id="获取切点-目标方法-信息"><a href="#获取切点-目标方法-信息" class="headerlink" title="获取切点(目标方法)信息"></a>获取切点(目标方法)信息</h3><img src="/images/image-20240307101345528.png" alt="image-20240307101345528" style="zoom: 50%;" />
 
 <p>1.获取目标方法信息(所有增强方法都可以)</p>
 <ul>
@@ -565,7 +568,7 @@ private String userName;
 <p>3.异常信息</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AfterThrowing(value=&quot;execution(* aop1.impl.*.*(..))&quot;,throwing=&quot;throwable&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterThrowing</span><span class="params">(Throwable throwable)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="切点表达式"><a href="#切点表达式" class="headerlink" title="切点表达式"></a>切点表达式</h3><img src="../images/image-20240307105203326.png" alt="image-20240307105203326" style="zoom:50%;" />
+<h3 id="切点表达式"><a href="#切点表达式" class="headerlink" title="切点表达式"></a>切点表达式</h3><img src="/images/image-20240307105203326.png" alt="image-20240307105203326" style="zoom:50%;" />
 
 <h3 id="切点表达式的提取和复用"><a href="#切点表达式的提取和复用" class="headerlink" title="切点表达式的提取和复用"></a>切点表达式的提取和复用</h3><p>1.在当前类内</p>
 <ul>
@@ -580,17 +583,17 @@ private String userName;
 <p>引用处：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before(&quot;aop1.MyPointCut.myPc()&quot;)</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><img src="../images/image-20240307111214215.png" alt="image-20240307111214215" style="zoom:50%;" />
+<h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><img src="/images/image-20240307111214215.png" alt="image-20240307111214215" style="zoom:50%;" />
 
 <h3 id="Order指定某增强的优先级"><a href="#Order指定某增强的优先级" class="headerlink" title="@Order指定某增强的优先级"></a>@Order指定某增强的优先级</h3><ul>
 <li>值越小，优先级越高，越先执行，且遵循洋葱模型</li>
-<li><img src="../images/image-20240307111723498.png" alt="image-20240307111723498" style="zoom:33%;" /></li>
+<li><img src="/images/image-20240307111723498.png" alt="image-20240307111723498" style="zoom:33%;" /></li>
 <li></li>
 </ul>
 <hr>
-<img src="../images/image-20240307112056720.png" alt="image-20240307112056720" style="zoom:50%;" />
+<img src="/images/image-20240307112056720.png" alt="image-20240307112056720" style="zoom:50%;" />
 
-<h2 id="tx声明式事务"><a href="#tx声明式事务" class="headerlink" title="tx声明式事务"></a>tx声明式事务</h2><img src="../images/image-20240307112400989.png" alt="image-20240307112400989" style="zoom:33%;" />
+<h2 id="tx声明式事务"><a href="#tx声明式事务" class="headerlink" title="tx声明式事务"></a>tx声明式事务</h2><img src="/images/image-20240307112400989.png" alt="image-20240307112400989" style="zoom:33%;" />
 
 <ul>
 <li><p>程序员只需要写配置，来指定哪些方法需要添加事务 及事务的属性</p>
@@ -599,8 +602,105 @@ private String userName;
 </li>
 </ul>
 <p>tx:对aop的再次封装</p>
-<img src="../images/image-20240307165644701.png" alt="image-20240307165644701" style="zoom:50%;" />
+<img src="/images/image-20240307165644701.png" alt="image-20240307165644701" style="zoom:50%;" />
 
+<p>1.先写好没加事务的代码</p>
+<p>2.配置类内写对应持久层的TransactionManager，并在注解类上加 <code>@EnableTransactionManagement//开启事务注解</code>注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> TransactionManager <span class="title function_">transactionManager</span><span class="params">(DataSource dataSource)</span>&#123;</span><br><span class="line">        <span class="comment">//内部需要进行事务的操作，基于连接池--&gt;注入连接池--&gt;可通过参数</span></span><br><span class="line">        <span class="type">DataSourceTransactionManager</span> <span class="variable">dataSourceTransactionManager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>();</span><br><span class="line">        dataSourceTransactionManager.setDataSource(dataSource);</span><br><span class="line">        <span class="keyword">return</span>  dataSourceTransactionManager;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.在需要加事务的<strong>类 或方法</strong>上加  <code>@Transactional</code>注解</p>
+<hr>
+<p><code>@Transactional</code>事务注解 相关<strong>属性</strong></p>
+<ul>
+<li><p>设置<strong>只读</strong>模式(不能修改，只能查询，但是查询速度会变快)</p>
+<ul>
+<li><code>@Transactional(readOnly=true)</code></li>
+<li>因为如果事务注解加在类上，那默认所有事务方法都是非只读模式，所以意义是让方法可以设置成只读</li>
+</ul>
+</li>
+<li><p>超时时间(<strong>超时回滚</strong>，释放资源)</p>
+<ul>
+<li><code>@Transactional(timwout=xxx</code></li>
+<li>默认值-1，即永远不会滚&#x2F;不超时</li>
+<li>如果类上的事务注解写了timeout&#x3D;xxx，方法上的注解没写timeout，则不会生效。因为方法上的把类的覆盖了(默认-1)</li>
+</ul>
+</li>
+<li><p><strong>隔离级别</strong>(多事务并发)</p>
+<ul>
+<li><p><code>@Transactional(isolation=Isolation.xxxxx)</code></p>
+</li>
+<li><p>常见隔离级别</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>解决</th>
+<th>没解决</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交</td>
+<td>Read Uncommitted</td>
+<td>一个事务可以读取另一个未提交事务的数据</td>
+<td></td>
+<td>脏读、不可重复读、幻读、丢失更新</td>
+</tr>
+<tr>
+<td>[oracle默认]  读已提交</td>
+<td>Read Committed</td>
+<td>一个事务要等另一个事务提交后才能读取数据</td>
+<td>脏读</td>
+<td>不可重复读、幻读、丢失更新</td>
+</tr>
+<tr>
+<td>[mysql默认隔离级别]  可重复读</td>
+<td>Repeatable Read</td>
+<td>在开始读取数据（事务开启）时，不再允许修改操作</td>
+<td>脏读，不可重复读</td>
+<td>幻读、丢失更新</td>
+</tr>
+<tr>
+<td>序列化</td>
+<td>Serializable</td>
+<td>将每个事务按一定的顺序去执行</td>
+<td>全解决了</td>
+<td>效率低下，比较耗数据库性能，一般不使用</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>事务传播行为(事物之间调用，如何影响<strong>子事务</strong>)</p>
+<ul>
+<li>E.G.: 事务B调用事务A，事务传播行为定义了 子事务A是否加入B事务</li>
+<li><img src="/images/image-20240307192215200.png" alt="image-20240307192215200" style="zoom:50%;" />如图存在事物间的调用关系，如果<code>changeName()</code>异常了回滚，那么<code>changgeAge()</code>也会滚，因为都一起加入了父事务</li>
+<li>在<strong>子事务(被调用的事务)上设置传播行为</strong></li>
+<li><img src="/images/image-20240307192523523.png" alt="image-20240307192523523" style="zoom:50%;" /></li>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>一个Transactional事务：</p>
+<ul>
+<li>成功：事务内的代码全都正常运行</li>
+<li>失败：内部发生任何*<u>运行时</u>*异常都是失败，回滚。(<u>所以运行时异常才会回滚，IO异常不会回滚</u>)</li>
+</ul>
+<img src="/images/image-20240307183833764.png" alt="image-20240307183833764" style="zoom: 33%;" />
+
+<p>可以：</p>
+<ul>
+<li>指定异常回滚：运行时异常 <code>@Transactional(rollbackFor=Exception.class)</code></li>
+<li>指定异常不回滚    <code>@Transactional(noRollbackFor)</code></li>
+</ul>
+<hr>
+<p>尚硅谷ssm-spring部分终于完结撒花</p>
+<p>ioc全程跟着code了，aop开始偷懒只专心写笔记，tx更偷懒了，不过每个部分都有敲代码。</p>
+<p>我看这套课程后面还有springboot，我想先赶紧看完＋跟着敲这套课的项目。</p>
+<p>还记得去年年底刚接触springboot时，helloworld入门配置都没调通 ，再放然后真的居然一个假期都没敢开电脑。</p>
+<p>ssm的话去年九月跟着雷丰阳＋ytb浅过了spring，但起码写了代码和笔记，但太冗杂了我懒得复习就又跟着尚硅谷学了，mvc好像都没怎么敲代码，mybatis倒是不怎么记得了。</p>
 
         
       </div>
