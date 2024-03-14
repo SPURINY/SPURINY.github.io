@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>ssm-mybatis | Purin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="mybatis文档     day4-2024年3月8日  mybatis是**持久层 **框架  自己写sql，但是不用写jdbc代码   1mapper接口&#x3D;&#x3D;dao接口   Mapper接口————Dao接口  MapperXML文件——Dao实现类(具体数据库动作，sql)  放到resources目录下，这样maven会把xxxmapper.xml打包    入门案例1.写xxxMapp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssm-mybatis">
+<meta property="og:url" content="https://spuriny.github.io/2024/03/08/ssm-mybatis/index.html">
+<meta property="og:site_name" content="Purin&#39;s blog">
+<meta property="og:description" content="mybatis文档     day4-2024年3月8日  mybatis是**持久层 **框架  自己写sql，但是不用写jdbc代码   1mapper接口&#x3D;&#x3D;dao接口   Mapper接口————Dao接口  MapperXML文件——Dao实现类(具体数据库动作，sql)  放到resources目录下，这样maven会把xxxmapper.xml打包    入门案例1.写xxxMapp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240310153924998.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240310151228276.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240310152339429.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240311112554755.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240311112642951.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240311122530231.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240311184125679.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240311193814382.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240313083151674.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240313083224264.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/08/images/image-20240314081402921.png">
+<meta property="article:published_time" content="2024-03-08T04:20:34.000Z">
+<meta property="article:modified_time" content="2024-03-14T00:14:09.695Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ssm mybatis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://spuriny.github.io/2024/03/08/images/image-20240310153924998.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Purin's blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/FPbhxHyaUAIkHwN.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Purin's blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories">Categories</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/categories">Categories</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/113333105_p0_master1200.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">purin </div>
+      <div class="dot"></div>
+      <div class="subtitle">習慣は第二の天性なり </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com/purins15" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://peing.net/zh-CN/puriny" title="peing"><i class="fa-solid fa-pencil"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/SPURINY" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box"></div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/doc/" rel="tag">doc</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm/" rel="tag">ssm</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm-mybatis/" rel="tag">ssm mybatis</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/test-tag2/" rel="tag">test tag2</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2024/03 ">
+          March 2024 
+          <div class="archive-count">5 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/12 ">
+          December 2023 
+          <div class="archive-count">3 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/11 ">
+          November 2023 
+          <div class="archive-count">5 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2024/03/08/ssm-mybatis/" title="ssm-mybatis" >
+            <div class="recent-link-text">
+              ssm-mybatis
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/04/day1-ssm/" title="day1 ssm" >
+            <div class="recent-link-text">
+              day1 ssm
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/04/again-ttest/" title="again ttest" >
+            <div class="recent-link-text">
+              again ttest
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/04/how-to-write-posts/" title="how to write posts" >
+            <div class="recent-link-text">
+              how to write posts
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/04/again-new-post/" title="again new post" >
+            <div class="recent-link-text">
+              again new post
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-ssm-mybatis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        ssm-mybatis
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-03-08T04:20:34.000Z" itemprop="datePublished">2024-03-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            13k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssm-mybatis/" rel="tag">ssm mybatis</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p><a target="_blank" rel="noopener" href="https://mybatis.net.cn/">mybatis文档</a></p>
+<hr>
+<ul>
+<li><p><input disabled="" type="checkbox"> 
+day4-2024年3月8日</p>
+</li>
+<li><p>mybatis是**持久层 **框架</p>
+</li>
+<li><p>自己写sql，但是不用写jdbc代码</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mapper接口==dao接口</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Mapper接口————Dao接口</p>
+</li>
+<li><p>MapperXML文件——Dao实现类(具体数据库动作，sql)</p>
+<ul>
+<li><strong>放到resources目录下</strong>，这样maven会把xxxmapper.xml打包</li>
+</ul>
+</li>
+</ul>
+<h1 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h1><p>1.写xxxMapper接口和对应的xxxMapper.xml(写方法对应的mapper们(内含sql))</p>
+<ul>
+<li>在<select><delete><update><insert>标签里写sql<br>且靠 id，如：id&#x3D;”getById”，去匹配对应的方法<br>每个标签对应一个方法<br>所以：<strong>mapper接口里的方法不能重载</strong>(虽然符合java语法，但是按id找的话就会行不通)</li>
+</ul>
+<p>2.对mybatis框架进行配置：<strong>mybatis-config.xml</strong>(MyBatis核心配置文件)</p>
+<p>[今天满课＋晚上出去玩了，所以就中午看了一点点]</p>
+<hr>
+<ul>
+<li><input disabled="" type="checkbox"> day5-2024年3月10日</li>
+</ul>
+<h1 id="mybatis-config-xml-MyBatis核心配置文件"><a href="#mybatis-config-xml-MyBatis核心配置文件" class="headerlink" title="mybatis-config.xml(MyBatis核心配置文件)"></a><strong>mybatis-config.xml</strong>(MyBatis核心配置文件)</h1><p>配置<strong>数据连接</strong>和<strong>MyBatis运行时所需的各种特性</strong>：包含了影响MyBatis行为甚深的设置（settings）和属性（properties）</p>
+<img src="../images/image-20240310153924998.png" alt="image-20240310153924998" style="zoom:50%;" />
+
+<ul>
+<li>这些子标签的使用要**<u>按顺序</u>**</li>
+</ul>
+<hr>
+<h2 id="入门案例-1"><a href="#入门案例-1" class="headerlink" title="入门案例"></a>入门案例</h2><ol>
+<li>导依赖</li>
+<li>创建pojo实体类</li>
+<li>xxMapper接口 及 xxMapper.xml文件</li>
+<li>mybatis的配置文件(mybatis-config.xml)<ul>
+<li>配数据源</li>
+<li>mapper位置</li>
+</ul>
+</li>
+<li>使用mybatis-api来crud<ul>
+<li>sqlSessionFactory</li>
+<li>sqlSession</li>
+<li>getMapper(接口.class)</li>
+</ul>
+</li>
+</ol>
+<p>实体类：[需要和数据库列名一样]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> eid;</span><br><span class="line">    <span class="keyword">private</span> String ename;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> esalary;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span>(eid+<span class="string">&quot; &quot;</span>+ename+<span class="string">&quot; &quot;</span>+esalary);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mapper接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* mapper接口==dao接口</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">EmployeeMapper</span> &#123;</span><br><span class="line">    Employee <span class="title function_">getById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对应的mapper.xml文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span> <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;p1.EmployeeMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    在&lt;select&gt;&lt;delete&gt;&lt;update&gt;&lt;insert&gt;标签里写sql</span></span><br><span class="line"><span class="comment">    且靠 id，如：id=&quot;getById&quot;，去匹配对应的方法</span></span><br><span class="line"><span class="comment">    每个标签对应一个方法</span></span><br><span class="line"><span class="comment">    所以：mapper接口里的方法不能重载(虽然符合java语法，但是按id找的话就会行不通)</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;p1.pojo.Employee&quot;</span>&gt;</span></span><br><span class="line">        select eid,ename,esalary from employees where eid=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>mabatis配置文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Confi 3.0//EN&quot;</span> <span class="string">&quot;http://www.mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 通过properties标签，读取java配置文件的内容 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;db.properties&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置mybatis的环境信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 配置JDBC事务控制，由mtybatis进行管理 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 配置数据源，采用dbcp连接池 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;db.driver&#125;&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;db.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;db.username&#125;&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;db.password&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;EmployeeMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test01</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> 1.读取外部资源(&quot;mybatis-config.xml&quot;)</span></span><br><span class="line">        <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> Resources.getResourceAsReader(<span class="string">&quot;mybatis-config.xml&quot;</span>);</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> 2.创建sqlSessionFactory</span></span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader);</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> 3.根据sqlSessionFactory创建sqlSession(每次事务创建一个，用完释放)</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">sqlSession</span> <span class="operator">=</span> factory.openSession();</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> 4.获取接口对应 代理对象 ，调用代理对象方法，，就会查找mapper方法</span></span><br><span class="line">        <span class="type">EmployeeMapper</span> <span class="variable">mapper</span> <span class="operator">=</span> sqlSession.getMapper(EmployeeMapper.class);</span><br><span class="line">        <span class="type">Employee</span> <span class="variable">employee</span> <span class="operator">=</span> mapper.getById(<span class="number">2</span>);</span><br><span class="line">        System.out.println(employee);</span><br><span class="line">        employee.toString();</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> 5.提交事务，释放资源</span></span><br><span class="line">        sqlSession.commit();<span class="comment">//提交事务，没有事务时可省略不写</span></span><br><span class="line">        sqlSession.close();<span class="comment">//释放</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>openssesion()自动开启事务了，但是默认不会自动提交事务</strong><ul>
+<li>需要手动提交： .commit()</li>
+</ul>
+</li>
+</ul>
+<hr>
+<img src="../images/image-20240310151228276.png" alt="image-20240310151228276" style="zoom:50%;" />
+
+<p>mybatis只是对最初的ibatis多了层封装</p>
+<h2 id="Mybatis原理"><a href="#Mybatis原理" class="headerlink" title="Mybatis原理"></a>Mybatis原理</h2><img src="../images/image-20240310152339429.png" alt="image-20240310152339429" style="zoom:50%;" />
+
+<ul>
+<li>mapper接口内只写方法名，<strong>sqlSession.getMapper(接口.class)<strong>能动态生成该接口对应的</strong>动态代理对象</strong>。</li>
+<li>人调用代理对象，动态代理对象去调用ibatis的方法<ul>
+<li>内部拼接接口的全限定符，方法名   去找对应的sql语句标签</li>
+</ul>
+</li>
+</ul>
+<h1 id="mybatis使用"><a href="#mybatis使用" class="headerlink" title="mybatis使用"></a>mybatis使用</h1><h2 id="向sql语句传参"><a href="#向sql语句传参" class="headerlink" title="向sql语句传参"></a>向sql语句传参</h2><h3 id="mybatis日志输出配置"><a href="#mybatis日志输出配置" class="headerlink" title="mybatis日志输出配置"></a>mybatis日志输出配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;STDOUT_LOGGING&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>&lt;settings&gt;</code>要按顺序，写在<code>&lt;properties&gt;</code>以后，xxx以前</p>
+</li>
+<li><p>控制台belike：</p>
+</li>
+<li><pre><code>Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@15dcfae7]
+==&gt;  Preparing: select eid,ename,esalary from employees where eid=? 
+==&gt; Parameters: 3(Integer)
+&lt;==    Columns: eid, ename, esalary
+&lt;==        Row: 3, 李丽, 5000
+&lt;==      Total: 1
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">### $&#123;&#125; 和 #&#123;&#125;</span><br><span class="line"></span><br><span class="line">- $&#123;&#125; ：直接**字符串拼接**，&quot;eid=&quot;+id</span><br><span class="line">  - 有**sql注入**的危险</span><br><span class="line">- #&#123;&#125;：占位符+赋值，eid=？ ？=赋值</span><br><span class="line"></span><br><span class="line">使用：动态值用`#&#123;&#125;`，如： `eid=#&#123;id&#125;`</span><br><span class="line"></span><br><span class="line">​            动态列名，容器名，关键字 用`$&#123;&#125;`,如：`$&#123;collumnName&#125;=#&#123;columnValue&#125;`</span><br><span class="line"></span><br><span class="line">- #&#123;eid&#125;的日志：</span><br><span class="line">  - ` where eid=? `先占位</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+==&gt;  Preparing: select eid,ename,esalary from employees where eid=? 
+==&gt; Parameters: 3(Integer)
+&lt;==    Columns: eid, ename, esalary
+&lt;==        Row: 3, 李丽, 5000
+&lt;==      Total: 1
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- $&#123;eid&#125;的日志：</span><br><span class="line">  - ` where eid=3  直接拼接了</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+==&gt;  Preparing: select eid,ename,esalary from employees where eid=3 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 数据输出</span><br><span class="line"></span><br><span class="line">- [ ] day6-2024年3月11日 月曜日</span><br><span class="line"></span><br><span class="line">一般插入都是返回影响的行数</span><br><span class="line"></span><br><span class="line">- 需求：插入后**返回主键**</span><br><span class="line">  - 自增型</span><br><span class="line">  - 非自增</span><br><span class="line"></span><br><span class="line">### 自增型</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;insert id=&quot;addEmployee&quot; useGeneratedKeys=&quot;true&quot; keyColumn=&quot;eid&quot; keyProperty=&quot;eid&quot;&gt;</span><br><span class="line">    insert into employees(ename,esalary) values(#&#123;ename&#125;,#&#123;esalary&#125;)</span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>useGeneratedKeys&#x3D;”true”</p>
+</li>
+<li><p>keyColumn&#x3D;”eid” 数据库表当主键的列名</p>
+</li>
+<li><p>keyProperty&#x3D;”eid” 实体类的对应的属性</p>
+</li>
+<li><p>然后用getEid就能获取主键</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(employee.getEid());</span><br></pre></td></tr></table></figure>
+
+<p>不加<code>useGeneratedKeys=&quot;true&quot;</code>:</p>
+</li>
+</ul>
+<img src="../images/image-20240311112554755.png" alt="image-20240311112554755" style="zoom:33%;" />
+
+<p>​		加上后：(16为对应的主键)</p>
+<img src="../images/image-20240311112642951.png" alt="image-20240311112642951" style="zoom:33%;" />
+
+<h3 id="非自增"><a href="#非自增" class="headerlink" title="非自增"></a>非自增</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertTeacher&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">order</span>=<span class="string">&quot;BEFORE&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;java.lang.String&quot;</span> <span class="attr">keyProperty</span>=<span class="string">&quot;tid&quot;</span>&gt;</span></span><br><span class="line">            select REPLACE(UUID(),&quot;-&quot;,&quot;&quot;)</span><br><span class="line">        <span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--相当于：String id = UUID.randomUUID().toString().replaceAll(&quot;-&quot;, &quot;&quot;);--&gt;</span></span><br><span class="line"></span><br><span class="line">        insert into teachers(tid,tname)values(#&#123;tid&#125;,#&#123;tname&#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>测试代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Teacher</span> <span class="variable">teacher</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Teacher</span>();</span><br><span class="line">      teacher.setUname(<span class="string">&quot;smith&quot;</span>);</span><br><span class="line">      System.out.println(<span class="string">&quot;之前&quot;</span>+teacher.getTid());</span><br><span class="line">      <span class="comment">/*String id = UUID.randomUUID().toString().replaceAll(&quot;-&quot;, &quot;&quot;);*/</span></span><br><span class="line">      <span class="comment">//teacher.setTid(id);</span></span><br><span class="line">      mapper.insertTeacher(teacher);</span><br><span class="line">      System.out.println(<span class="string">&quot;后来&quot;</span>+teacher.getTid());</span><br></pre></td></tr></table></figure>
+
+<p>控制台：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">之前null</span><br><span class="line">Opening JDBC Connection</span><br><span class="line">Created connection 1305486145.</span><br><span class="line">Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@4dd02341]</span><br><span class="line">==&gt;  Preparing: select REPLACE(UUID(),&quot;-&quot;,&quot;&quot;) </span><br><span class="line">==&gt; Parameters: </span><br><span class="line">&lt;==    Columns: REPLACE(UUID(),&quot;-&quot;,&quot;&quot;)</span><br><span class="line">&lt;==        Row: 74f32756df5b11ee9f7828dfeb438d7e</span><br><span class="line">&lt;==      Total: 1</span><br><span class="line">==&gt;  Preparing: insert into teachers(tid,tname)values(?,?); </span><br><span class="line">==&gt; Parameters: 74f32756df5b11ee9f7828dfeb438d7e(String), smith(String)</span><br><span class="line">&lt;==    Updates: 1</span><br><span class="line">后来74f32756df5b11ee9f7828dfeb438d7e</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>lombok插件＋依赖</p>
+<ul>
+<li><code>@Data</code>  可以不用写setter getter<ul>
+<li>如图Struct可知：</li>
+</ul>
+</li>
+</ul>
+<img src="../images/image-20240311122530231.png" alt="image-20240311122530231" style="zoom:33%;" />
+
+<h3 id="crud练习"><a href="#crud练习" class="headerlink" title="crud练习"></a>crud练习</h3><ul>
+<li><code>@BeforeEach</code>&#x2F;&#x2F;在每个测试方法执行前执行这个【可用于存放重复代码</li>
+<li><code>@AfterEach</code>&#x2F;&#x2F;在每个测试方法执行之后</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test1</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> SqlSession session;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span><span class="comment">//在每个测试方法执行前执行这个【可用于存放重复代码</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> Resources.getResourceAsReader(<span class="string">&quot;mybatis-config.xml&quot;</span>);</span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader);</span><br><span class="line">        session = factory.openSession();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterEach</span><span class="comment">//在每个测试方法执行之后</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">after</span><span class="params">()</span>&#123;</span><br><span class="line">        session.commit();</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testInsert</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">UserMapper</span> <span class="variable">mapper</span> <span class="operator">=</span> session.getMapper(UserMapper.class);</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setUsername(<span class="string">&quot;lihua&quot;</span>);</span><br><span class="line">        user.setPassword(<span class="string">&quot;asdfhj&quot;</span>);</span><br><span class="line">        <span class="type">int</span> res=mapper.insert(user);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="Mybatis多表映射"><a href="#Mybatis多表映射" class="headerlink" title="Mybatis多表映射"></a>Mybatis多表映射</h1><ul>
+<li><p>多表查询的sql需要多表连接查询</p>
+</li>
+<li><p>pojo实体类存储数据，属性需要设计得能承载多个表查询的结果</p>
+</li>
+<li><p>自定义结果集映射 <code>ResultMap</code></p>
+</li>
+</ul>
+<h2 id="多表实体类设计"><a href="#多表实体类设计" class="headerlink" title="多表实体类设计"></a>多表实体类设计</h2><p>多表关系(双向查看)：</p>
+<ul>
+<li>一对一</li>
+<li>一对多(guest和order，一个顾客可对多个订单，一个订单只能对一个客户)</li>
+<li>多对多</li>
+</ul>
+<p>多表-<u><strong>实体类设计时【单向】：</strong></u></p>
+<ul>
+<li><strong>对一</strong><ul>
+<li><strong>属性(成员)中包含对方</strong></li>
+</ul>
+</li>
+<li><strong>对多</strong><ul>
+<li><strong>属性(成员)中包含对方的List</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="对一实现"><a href="#对一实现" class="headerlink" title="对一实现"></a>对一实现</h2><blockquote>
+<p>需求：根据订单id，映射订单信息 及订单对应的客户信息</p>
+</blockquote>
+<p>订单—-对——&gt;客户：<u>对一</u>关系</p>
+<ul>
+<li>Order类属性加上Customer对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Order</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> oid;</span><br><span class="line">    <span class="keyword">private</span> String oname;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> cid;</span><br><span class="line">    <span class="keyword">private</span> Customer customer;<span class="comment">//对一关系</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>建OrderMapper接口</p>
+</li>
+<li><p>OderMapper.xml </p>
+<ul>
+<li>添加<code>&lt;resultMap&gt;</code>自定义映射，crud的标签里返回用<code>ResultMap</code></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;orderMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;pojo.Order&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--主键用id标签配--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;oid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;oid&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--普通属性result--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;oname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;oname&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cid&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--对象属性association--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;customer&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;pojo.Customer&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cid&quot;</span>/&gt;</span><span class="comment">&lt;!--customer的主键--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;cname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cname&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryOrderById&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;orderMap&quot;</span>&gt;</span></span><br><span class="line">        select * from t_order to1 join t_customer tc1</span><br><span class="line">         on tc1.cid=to1.cid where to1.oid=2001;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><img src="../images/image-20240311184125679.png" alt="image-20240311184125679" style="zoom: 33%;" /></li>
+</ul>
+<hr>
+<h2 id="对多实现"><a href="#对多实现" class="headerlink" title="对多实现"></a>对多实现</h2><blockquote>
+<p>需求：根据顾客id，映射顾客信息 及顾客对应的订单信息</p>
+</blockquote>
+<ul>
+<li>customer类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;Order&gt; orders;<span class="comment">//顾客 与 订单 对多</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CustomerMapper.xml 里集合属性的标签用<code>&lt;collection&gt;</code></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;customerMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;pojo.Customer&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cid&quot;</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;cname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cname&quot;</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">&quot;orders&quot;</span> <span class="attr">ofType</span>=<span class="string">&quot;pojo.Order&quot;</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;oid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;oid&quot;</span>/&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;oname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;oname&quot;</span>/&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cid&quot;</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Mybatis动态sql语句"><a href="#Mybatis动态sql语句" class="headerlink" title="Mybatis动态sql语句"></a>Mybatis动态sql语句</h1><h2 id="1-where-if"><a href="#1-where-if" class="headerlink" title="1.&lt; where&gt;&lt; if&gt;"></a>1.&lt; where&gt;&lt; if&gt;</h2><img src="../images/image-20240311193814382.png" alt="image-20240311193814382" style="zoom: 33%;" />
+
+<ul>
+<li><pre><code>&lt;where&gt;
+     &lt;if&gt;语句&lt;/if&gt;
+ &lt;/where&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  嵌套使用</span><br><span class="line"></span><br><span class="line">  - where标签</span><br><span class="line">    - 能自动判断`and`是否多余</span><br><span class="line">    - 加where关键字</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  &lt;img src=&quot;../images/image-20240311194024125.png&quot; alt=&quot;image-20240311194024125&quot; style=&quot;zoom: 33%;&quot; /&gt;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;select id=&quot;query&quot; resultType=&quot;pojo.Employee&quot;&gt;</span><br><span class="line">        select * from employees</span><br><span class="line">        &lt;where&gt;</span><br><span class="line"></span><br><span class="line">            &lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">                ename=#&#123;arg0&#125;</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">            &lt;if test=&quot;arg1!=null and arg1 &amp;gt; 2000&quot;&gt;</span><br><span class="line">                and esalary=#&#123;arg1&#125;</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p><strong>注意：</strong>多个参数的input，参数只能用arg0，arg1（之前写的#{ename}结果报错↓）</p>
+<blockquote>
+<p>### Error querying database.  Cause: org.apache.ibatis.binding.BindingException: Parameter ‘ename’ not found. Available parameters are [arg1, arg0, param1, param2]</p>
+</blockquote>
+<h2 id="2-set"><a href="#2-set" class="headerlink" title="2.&lt; set&gt;"></a>2.&lt; set&gt;</h2><ul>
+<li>能自动判断<code>,</code>是否多余</li>
+<li>加<code>set</code>关键字</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">update users &lt;set &gt;</span><br><span class="line">                &lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">                    uname=#&#123;arg0&#125;, </span><br><span class="line">                &lt;/if&gt;</span><br><span class="line">                &lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">                     upsw=#&#123;arg1&#125; </span><br><span class="line">                &lt;/if&gt;</span><br><span class="line">               &lt;/set&gt;</span><br><span class="line">			where uid=#&#123;uid&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-choose"><a href="#3-choose" class="headerlink" title="3.&lt; choose&gt;"></a>3.&lt; choose&gt;</h2><ul>
+<li>多选一</li>
+<li>即<code>switch，，，case</code></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;query&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;pojo.Employee&quot;</span>&gt;</span></span><br><span class="line">        select * from employees</span><br><span class="line">        where</span><br><span class="line">    <span class="tag">&lt;<span class="name">choose</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">&quot;arg0!=null&quot;</span>&gt;</span></span><br><span class="line">                ename=#&#123;arg0&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">&quot;arg1!=null and arg1 <span class="symbol">&amp;gt;</span> 2000&quot;</span>&gt;</span></span><br><span class="line">                and esalary=#&#123;arg1&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">otherwise</span>&gt;</span>1=1<span class="tag">&lt;/<span class="name">otherwise</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">choose</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-foreach"><a href="#4-foreach" class="headerlink" title="4.&lt; foreach&gt;"></a>4.&lt; foreach&gt;</h2><ul>
+<li>批量xxx</li>
+</ul>
+<h3 id="批量查询"><a href="#批量查询" class="headerlink" title="批量查询"></a>批量查询</h3><blockquote>
+<p>目标： selecct * from emplyees where eid in     list&#x3D; [1,2,3,4]</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按id(id的list)批量查询&lt;foreach&gt;</span></span><br><span class="line">    List&lt;Employee&gt; <span class="title function_">queryBatch</span><span class="params">(<span class="meta">@Param(&quot;ids&quot;)</span> List&lt;Integer&gt; ids)</span>;</span><br><span class="line">    <span class="comment">//@Param可以在xml中使用所制定的别名来识别参数，然后就不用怕arg0 arg1了</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryBatch&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;pojo.Employee&quot;</span>&gt;</span></span><br><span class="line">        selecct * from emplyees where eid in</span><br><span class="line">            <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;ids&quot;</span> <span class="attr">open</span>=<span class="string">&quot;(&quot;</span> <span class="attr">close</span>=<span class="string">&quot;)&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span> <span class="attr">item</span>=<span class="string">&quot;id&quot;</span>&gt;</span></span><br><span class="line">                /*</span><br><span class="line">                id:获取每个的(当前)遍历值</span><br><span class="line">                open:前缀，只一次</span><br><span class="line">                close:后缀，只一次</span><br><span class="line">            */</span><br><span class="line">                    #&#123;id&#125;/*用#&#123;&#125;引用遍历项*/</span><br><span class="line">            <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：(1,2,3,4),seperator在最后一个时会判断还加不加分隔</p>
+<h3 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h3><blockquote>
+<p>目标：insert into employees(ename,esalary) values(“xxx1”,”2000”),(“xxx2”,”2000”);</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//批量插入</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">insert</span><span class="params">(<span class="meta">@Param(&quot;employees&quot;)</span>List&lt;Employee&gt; employees)</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insert&quot;</span>&gt;</span></span><br><span class="line">        /*insert into employees(ename,esalary) values(&quot;xxx1&quot;,&quot;2000&quot;),(&quot;xxx2&quot;,&quot;2000&quot;);*/</span><br><span class="line">        insert into employees(ename,esalary) values</span><br><span class="line">                    <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;employees&quot;</span> <span class="attr">item</span>=<span class="string">&quot;employee&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span>&gt;</span></span><br><span class="line">                        (#&#123;employee.ename&#125;,#&#123;emplyee.esalary&#125;)/*(xx,xx)*/</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="sql片段"><a href="#sql片段" class="headerlink" title="sql片段"></a>sql片段</h2><ul>
+<li>提取重复的sql片段</li>
+</ul>
+<h1 id="mybatis高级扩展"><a href="#mybatis高级扩展" class="headerlink" title="mybatis高级扩展"></a>mybatis高级扩展</h1><h2 id="1-在mybatis-config-xml中批量指定mapper"><a href="#1-在mybatis-config-xml中批量指定mapper" class="headerlink" title="1.在mybatis-config.xml中批量指定mapper"></a>1.在mybatis-config.xml中批量指定mapper</h2><p>原来：（一个个指定</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;EmployeeMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;Employee2Mapper.xml&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;Employee3Mapper.xml&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.xx.mapper&quot;</span>/&gt;</span><span class="comment">&lt;!--mappper接口所在的包--&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>且mapper.xml需要与mapper接口有<code>同样的文件结构</code><ul>
+<li>​	比如mapper接口在<code>“com.atguigu.mapper”包</code>下，</li>
+<li>​    那么mapper.xml要放在resources目录下的<code>com/atguigu/mapper</code>目录下</li>
+<li>然后打包时，点开target会发现<code>打包到了一起</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-插件机制及分页插件"><a href="#2-插件机制及分页插件" class="headerlink" title="2.插件机制及分页插件"></a>2.插件机制及分页插件</h2><p>插件机制类似拦截器：</p>
+<img src="../images/image-20240313083151674.png" alt="image-20240313083151674" style="zoom:50%;" />
+
+<p>分页插件：</p>
+<ul>
+<li>不需要自己算页的偏移值了，分页插件做</li>
+<li><code>sql+limit xxx</code><ul>
+<li>sql语句中不要写limit</li>
+<li>sql中不要写<code>；</code></li>
+<li>因为<code>xxxx;limit x,y 了</code></li>
+</ul>
+</li>
+</ul>
+<img src="../images/image-20240313083224264.png" alt="image-20240313083224264" style="zoom: 33%;" />
+
+<p>分页插件使用：</p>
+<p>1.导依赖  </p>
+<p>2.config.xml中告诉mybatis</p>
+<p>【&lt; plugins&gt;写在&lt; environments&gt;前面】</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageInterceptor&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;helperDialect&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.调用</p>
+<ul>
+<li>调用之前设置分页数据（当前第几页，每页显示多少个）<code>PageHelper.startPage(1,2);</code></li>
+<li>调用方法（查询）</li>
+<li>将查询信息封装成<code>PageInfo</code>分页实体类（可通过该类对象查看分页信息）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testPagePlugin</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">EmployeeMapper</span> <span class="variable">mapper</span> <span class="operator">=</span> session.getMapper(EmployeeMapper.class);</span><br><span class="line"></span><br><span class="line">        PageHelper.startPage(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        List&lt;Employee&gt; list = mapper.queryList();</span><br><span class="line">        PageInfo&lt;Employee&gt; employeePageInfo = <span class="keyword">new</span> <span class="title class_">PageInfo</span>&lt;&gt;(list);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意sql不要写分号</li>
+</ul>
+<img src="../images/image-20240314081402921.png" alt="image-20240314081402921" style="zoom:50%;" />
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2024/03/04/day1-ssm/"
+      title="day1 ssm"
+     >
+
+    <p class="title-text">
+      
+        day1 ssm
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 purin<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
