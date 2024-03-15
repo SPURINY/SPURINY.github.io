@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>ssm-springmvc | Purin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="web框架（spring-webmvc） 基于servlet API（封装）       DispatcherServlet：springmvc提供，需要在web.xml中配置 HandlerMapping：springmvc提供，需要ioc配置及加入ioc HandlerAdapter：springmvc提供，需要ioc配置及加入ioc Handler：自己定义，需要配置到HandlerMap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssm-springmvc">
+<meta property="og:url" content="https://spuriny.github.io/2024/03/14/ssm-springmvc/index.html">
+<meta property="og:site_name" content="Purin&#39;s blog">
+<meta property="og:description" content="web框架（spring-webmvc） 基于servlet API（封装）       DispatcherServlet：springmvc提供，需要在web.xml中配置 HandlerMapping：springmvc提供，需要ioc配置及加入ioc HandlerAdapter：springmvc提供，需要ioc配置及加入ioc Handler：自己定义，需要配置到HandlerMap">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240314082415027.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240314083715352.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240315165036777.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240315195457153.png">
+<meta property="article:published_time" content="2024-03-14T00:18:46.000Z">
+<meta property="article:modified_time" content="2024-03-15T12:57:04.432Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ssm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://spuriny.github.io/2024/03/14/images/image-20240314082415027.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Purin's blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/FPbhxHyaUAIkHwN.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Purin's blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories">Categories</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/categories">Categories</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/113333105_p0_master1200.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">purin </div>
+      <div class="dot"></div>
+      <div class="subtitle">習慣は第二の天性なり </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com/purins15" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://peing.net/zh-CN/puriny" title="peing"><i class="fa-solid fa-pencil"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/SPURINY" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box"></div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/doc/" rel="tag">doc</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm/" rel="tag">ssm</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm-mybatis/" rel="tag">ssm mybatis</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/test-tag2/" rel="tag">test tag2</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2024/03 ">
+          March 2024 
+          <div class="archive-count">6 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/12 ">
+          December 2023 
+          <div class="archive-count">3 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/11 ">
+          November 2023 
+          <div class="archive-count">5 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2024/03/14/ssm-springmvc/" title="ssm-springmvc" >
+            <div class="recent-link-text">
+              ssm-springmvc
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/08/ssm-mybatis/" title="ssm-mybatis" >
+            <div class="recent-link-text">
+              ssm-mybatis
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/04/day1-ssm/" title="day1 ssm" >
+            <div class="recent-link-text">
+              day1 ssm
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/04/again-ttest/" title="again ttest" >
+            <div class="recent-link-text">
+              again ttest
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/04/how-to-write-posts/" title="how to write posts" >
+            <div class="recent-link-text">
+              how to write posts
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-ssm-springmvc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        ssm-springmvc
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-03-14T00:18:46.000Z" itemprop="datePublished">2024-03-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            7.2k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssm/" rel="tag">ssm</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <ul>
+<li>web框架（spring-webmvc）</li>
+<li>基于servlet API（封装）</li>
+</ul>
+<img src="../images/image-20240314082415027.png" alt="image-20240314082415027" style="zoom:50%;" />
+
+<img src="../images/image-20240314083715352.png" alt="image-20240314083715352" style="zoom:50%;" />
+
+<ul>
+<li>DispatcherServlet：springmvc提供，需要在web.xml中配置</li>
+<li>HandlerMapping：springmvc提供，需要ioc配置及加入ioc</li>
+<li>HandlerAdapter：springmvc提供，需要ioc配置及加入ioc</li>
+<li>Handler：自己定义，需要配置到HandlerMapping中，用于接收参数、向后调用业务</li>
+<li>ViewResovler：soringmvc提供，需要ioc配置及加入ioc，但不是必须的部件</li>
+</ul>
+<h1 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h1><p>把项目转成web项目先（add framework support）</p>
+<p>依赖：</p>
+<ul>
+<li>ioc—-spring-context</li>
+<li>springmvc——-spring-webmvc</li>
+<li>servlet——–jakarta.servlet-api</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Their values are accessible anywhere within a POM by using the notation $&#123;X&#125;, where X is the property--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>17<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>17<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">spring.version</span>&gt;</span>6.0.6<span class="tag">&lt;/<span class="name">spring.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet.api</span>&gt;</span>9.1.0<span class="tag">&lt;/<span class="name">servlet.api</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jakarta.platform<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jakarta.jakartaee-web-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;servlet.api&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Controller：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;springmvc/hello&quot;)</span><span class="comment">//向HandlerMapping注册，给外界一个访问路径</span></span><br><span class="line">    <span class="meta">@ResponseBody</span><span class="comment">//直接返回字符串给前端，而没有视图--&gt;不用找ViewResolver</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;teriminal hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello springmvc&quot;</span>;<span class="comment">//返回一个字符串会直接给前端</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;controller&quot;)</span><span class="comment">//包扫描</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MVCConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RequestMappingHandlerMapping <span class="title function_">handlerMapping</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RequestMappingHandlerMapping</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RequestMappingHandlerAdapter <span class="title function_">handlerAdapter</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RequestMappingHandlerAdapter</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化类</p>
+<ul>
+<li>会被web项目加载，<strong>初始化ioc容器</strong>，设置DispatcherServlet地址</li>
+<li>替代web.xml</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 会被web项目加载，初始化ioc容器，设置DispatcherServlet地址</span></span><br><span class="line"><span class="comment">* 替代web.xml</span></span><br><span class="line"><span class="comment">* 项目启动的时候，这个类会自动加载</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringMVCInit</span> <span class="keyword">extends</span> <span class="title class_">AbstractAnnotationConfigDispatcherServletInitializer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getRootConfigClasses() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Class</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getServletConfigClasses() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;MVCConfig.class&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> String[] getServletMappings() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123; <span class="string">&quot;/&quot;</span>&#125;;<span class="comment">//拦截，“/”表示拦截所有</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="web容器初始化原理"><a href="#web容器初始化原理" class="headerlink" title="web容器初始化原理"></a>web容器初始化原理</h2><img src="../images/image-20240315165036777.png" alt="image-20240315165036777" style="zoom: 33%;" />
+
+<ol>
+<li></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">WebApplicationInitializer</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">onStartup</span><span class="params">(ServletContext servletContext)</span> <span class="keyword">throws</span> ServletException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>web项目一启动就会自动调用<code>onStartUp()</code></li>
+</ul>
+<ol start="2">
+<li></li>
+</ol>
+<p>父类中没有重写<code>onStartUp()</code>，爷爷类重写了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AbstractDispatcherServletInitializer</span> <span class="keyword">extends</span> <span class="title class_">AbstractContextLoaderInitializer</span> &#123;</span><br><span class="line">  ........</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onStartup</span><span class="params">(ServletContext servletContext)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        <span class="built_in">super</span>.onStartup(servletContext);</span><br><span class="line">        <span class="built_in">this</span>.registerDispatcherServlet(servletContext);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li></li>
+</ol>
+<p>找到（ctrl＋点击）<code>registerDispatcherServlet()</code>：</p>
+<ul>
+<li>由方法名知createServletApplicationContext()调用方法来创建ioc容器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">registerDispatcherServlet</span><span class="params">(ServletContext servletContext)</span> &#123;</span><br><span class="line">       ....</span><br><span class="line">        <span class="type">WebApplicationContext</span> <span class="variable">servletAppContext</span> <span class="operator">=</span> <span class="built_in">this</span>.createServletApplicationContext();</span><br><span class="line">       .....</span><br><span class="line">       <span class="type">FrameworkServlet</span> <span class="variable">dispatcherServlet</span> <span class="operator">=</span> <span class="built_in">this</span>.createDispatcherServlet(servletAppContext);</span><br><span class="line">   		 .....</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li></li>
+</ol>
+<p>找到createServletApplicationContext()：</p>
+<ul>
+<li>是爷爷类中抽象方法，去SpringMVCInit的父类中找对应实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">abstract</span> WebApplicationContext <span class="title function_">createServletApplicationContext</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li></li>
+</ol>
+<p>找到父类中的实现：</p>
+<ul>
+<li><p>new AnnotationConfigWebApplicationContext();创建ioc容器</p>
+</li>
+<li><p>if (!ObjectUtils.isEmpty(configClasses)) {<br>    context.register(configClasses);<br>}如果传入了配置类，就<strong>注册配置类</strong>,<em><u>即把配置类加载到ioc容器中</u></em></p>
+<ul>
+<li><pre><code class="java">@Override
+    protected Class&lt;?&gt;[] getServletConfigClasses() &#123;
+        return new Class[]&#123;MVCConfig.class&#125;;
+    &#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    在SpringMVCInit中可发现已传入配置类↑</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">protected WebApplicationContext createServletApplicationContext() &#123;</span><br><span class="line">    AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();</span><br><span class="line">    Class&lt;?&gt;[] configClasses = this.getServletConfigClasses();</span><br><span class="line">    if (!ObjectUtils.isEmpty(configClasses)) &#123;</span><br><span class="line">        context.register(configClasses);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return context;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="springmvc中遇见的404"><a href="#springmvc中遇见的404" class="headerlink" title="springmvc中遇见的404"></a>springmvc中遇见的404</h2><p>1.<img src="../images/image-20240315195457153.png" alt="image-20240315195457153" style="zoom:33%;" /></p>
+<p>部署时的路径是否正确，如图中根目录就是：<code>http://localhost:8080</code></p>
+<p>2.p102–jackson依赖（原因未知，可能朝前端输出字符串需要？</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.p106—没变成功成web项目，可通过观察<u>文件结构</u><strong>有无webapp</strong>判断</p>
+<h1 id="二，springmvc接收数据"><a href="#二，springmvc接收数据" class="headerlink" title="二，springmvc接收数据"></a>二，springmvc接收数据</h1><h2 id="2-1-访问路径设置"><a href="#2-1-访问路径设置" class="headerlink" title="2.1 访问路径设置"></a>2.1 访问路径设置</h2><p><code>@RequestMapping( )</code>把<strong>handler(方法)<strong>和</strong>访问路径</strong>注册到<code>HandlerMapping</code>中</p>
+<ul>
+<li><code>@WebServlet(&quot;**/**xxxx&quot;)</code> 路径<u>要求严格</u>，必须以“&#x2F; ”开头</li>
+<li><code>@RequestMapping(&quot;xxx&quot;)</code>要求没那么严格<ul>
+<li>支持模糊匹配：<code>/user/*</code>——-&gt;<code>/user/a</code>或<code>/user/b</code>都可以匹配上</li>
+<li><code>/user/**</code>———&gt;<code>/user/a/b/c</code>甚至都能匹配上</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;springmvc/hello&quot;)</span><span class="comment">//向HandlerMapping注册，给外界一个访问路径</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;teriminal hello&quot;</span>);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;hello springmvc&quot;</span>;<span class="comment">//返回一个字符串会直接给前端</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>类上</strong>加<code>@RequestMapping(&quot;xxx&quot;)</code>时能对类内所有方法的路径加一个前缀，此时方法上的成了进一步的具体路径</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;login&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">login</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//即“user/login”  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>请求方式，若不满足指定的请求方式—-<strong>报405</strong><ul>
+<li>或用<code>@PostMapping</code>，<code>@GetMapping</code>等代替<code>@RequestMapping</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value=&quot;login&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-接收参数"><a href="#2-2-接收参数" class="headerlink" title="2.2 接收参数"></a>2.2 接收参数</h2><h3 id="1-param与JSON参数对比"><a href="#1-param与JSON参数对比" class="headerlink" title="1.param与JSON参数对比"></a>1.param与JSON参数对比</h3><p>param：k1&#x3D;v1&amp;kk2&#x3D;v2  </p>
+<ul>
+<li>GET</li>
+</ul>
+<p>JSON: k1:v1,k2:v2【可用于复杂数据结构]  </p>
+<ul>
+<li>POST</li>
+</ul>
+<h3 id="2-param接收参数"><a href="#2-param接收参数" class="headerlink" title="2.param接收参数"></a>2.param接收参数</h3><p>① 直接接收   &#x2F;param&#x2F;data?name&#x3D;xxx&amp;age&#x3D;xxx    </p>
+<ul>
+<li>可以不传递，或传错参数名，——-不报错</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    * &quot;/param/data?name=xxx&amp;age=xxx&quot;</span></span><br><span class="line"><span class="comment">    * 参数名和形参一样才传参成功</span></span><br><span class="line"><span class="comment">    * 不写某个形参或 写错 就对应的形参为null</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/data&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">data</span><span class="params">(String name,Integer age)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;name:&quot;</span>+name+<span class="string">&quot;,age:&quot;</span>+age);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;name:&quot;</span>+name+<span class="string">&quot;,age:&quot;</span>+age;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问<code>http://localhost:8080/param/data?namesssss=root&amp;age=19</code>【参数名和形参列表对不上】</p>
+<p>显示：<code>name:null,age:19</code></p>
+<p>② <code>@RequestParam</code>注解(加在形参列表上)</p>
+<ul>
+<li>可设定不必须传某参数，并设默认值-------------@RequestParam(required &#x3D; false,defaultValue &#x3D; “xx”)</li>
+<li>可设定必须传，不穿报错400---------@RequestParam</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/data02&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">data02</span><span class="params">(<span class="meta">@RequestParam</span> String name,</span></span><br><span class="line"><span class="params">                        <span class="meta">@RequestParam(required = false,defaultValue = &quot;1&quot;)</span> Integer age)</span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;name:&quot;</span>+name+<span class="string">&quot;,age:&quot;</span>+age);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;name:&quot;</span>+name+<span class="string">&quot;,age:&quot;</span>+age;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>③一名对应多个值(用集合接收+@RequestParam) hbs&#x3D;xx1&amp;hbs&#x3D;xx2</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/data03&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">data03</span><span class="params">(<span class="meta">@RequestParam</span> List&lt;String&gt; hbs)</span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;hbs:&quot;</span>+hbs);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问：<code>http://localhost:8080/param/data03?hbs=%22sleep%22&amp;hbs=%22music%22</code></p>
+<p>p.s.:param底层是asc编码，所以””复制过来变了</p>
+<p><strong>④ 用实体类接收</strong></p>
+<p>直接在形参处写上实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/data04&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">data04</span><span class="params">(User user)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user.toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问：<code>http://localhost:8080/param/data04?name=root&amp;age=19</code></p>
+<p>显示：<code>User&#123;name=&#39;root&#39;, age=19&#125;</code></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2024/03/08/ssm-mybatis/"
+      title="ssm-mybatis"
+     >
+
+    <p class="title-text">
+      
+        ssm-mybatis
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 purin<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
