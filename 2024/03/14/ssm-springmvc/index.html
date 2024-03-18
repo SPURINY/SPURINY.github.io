@@ -31,8 +31,17 @@
 <meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240314083715352.png">
 <meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240315165036777.png">
 <meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240315195457153.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240316141654005.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240316142601851.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240316165157397.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240316170708099.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240316172403313.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240316175553868.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240318192027250.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240318202432713.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/14/images/image-20240318203746163.png">
 <meta property="article:published_time" content="2024-03-14T00:18:46.000Z">
-<meta property="article:modified_time" content="2024-03-15T12:57:04.432Z">
+<meta property="article:modified_time" content="2024-03-18T13:04:37.894Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ssm">
 <meta name="twitter:card" content="summary">
@@ -288,7 +297,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            7.2k words 
+            15k words 
           </div>
         </div>
         
@@ -393,6 +402,15 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>3.p106—没变成功成web项目，可通过观察<u>文件结构</u><strong>有无webapp</strong>判断</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Good_omen/article/details/121205641">SpringMVC项目中web和webapp的区别_webapp和web的区别-CSDN博客</a></p>
+<p>4.没在Controller类上面＋<code>@ResponseBody</code>注解【直接返回字符串给前端，不找视图，也不走视图解释器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;cookie&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CookieController</span></span><br></pre></td></tr></table></figure>
+
+<p>5.配置类中包扫描的路径有没有改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ComponentScan(&quot;cookie&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="二，springmvc接收数据"><a href="#二，springmvc接收数据" class="headerlink" title="二，springmvc接收数据"></a>二，springmvc接收数据</h1><h2 id="2-1-访问路径设置"><a href="#2-1-访问路径设置" class="headerlink" title="2.1 访问路径设置"></a>2.1 访问路径设置</h2><p><code>@RequestMapping( )</code>把<strong>handler(方法)<strong>和</strong>访问路径</strong>注册到<code>HandlerMapping</code>中</p>
 <ul>
 <li><code>@WebServlet(&quot;**/**xxxx&quot;)</code> 路径<u>要求严格</u>，必须以“&#x2F; ”开头</li>
@@ -405,7 +423,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;springmvc/hello&quot;)</span><span class="comment">//向HandlerMapping注册，给外界一个访问路径</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;teriminal hello&quot;</span>);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;hello springmvc&quot;</span>;<span class="comment">//返回一个字符串会直接给前端</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><strong>类上</strong>加<code>@RequestMapping(&quot;xxx&quot;)</code>时能对类内所有方法的路径加一个前缀，此时方法上的成了进一步的具体路径</li>
+<li><strong>类上</strong>加<code>@RequestMapping(&quot;xxx&quot;)</code>时能对类内所有方法的路径加一个前缀，此时方法上的成了进一步的具体路径<ul>
+<li>若类上写了，方法上可以只写<code>@RequestMapping</code>，这样访问该方法路径就是类上的值</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;login&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">login</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//即“user/login”  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -425,7 +446,10 @@
 <ul>
 <li>POST</li>
 </ul>
-<h3 id="2-param接收参数"><a href="#2-param接收参数" class="headerlink" title="2.param接收参数"></a>2.param接收参数</h3><p>① 直接接收   &#x2F;param&#x2F;data?name&#x3D;xxx&amp;age&#x3D;xxx    </p>
+<p>handler方法形参处<strong>默认什么注解都不加</strong>时是<strong>param</strong>数据，<strong>json</strong>加<code>@RequestBody</code>注解，<strong>路径参数</strong>加<code>@PathVariable</code>注解</p>
+<hr>
+<p>除param数据当形参外，其他类型数据当形参都需要加注解<code>@RequestBody</code></p>
+<h3 id="2-param参数接收"><a href="#2-param参数接收" class="headerlink" title="2.param参数接收"></a>2.param参数接收</h3><p>① 直接接收   &#x2F;param&#x2F;data?name&#x3D;xxx&amp;age&#x3D;xxx    </p>
 <ul>
 <li>可以不传递，或传错参数名，——-不报错</li>
 </ul>
@@ -453,6 +477,152 @@
 
 <p>访问：<code>http://localhost:8080/param/data04?name=root&amp;age=19</code></p>
 <p>显示：<code>User&#123;name=&#39;root&#39;, age=19&#125;</code></p>
+<h3 id="3-json数据接收"><a href="#3-json数据接收" class="headerlink" title="3.json数据接收"></a>3.json数据接收</h3><p>json数据和实体类属性对应，<strong>用<u>实体类</u>接收JSON数据</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;json&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JsonController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;data&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">data</span><span class="params">(<span class="meta">@RequestBody</span> People people)</span>&#123;</span><br><span class="line">        System.out.println(people);</span><br><span class="line">        <span class="keyword">return</span> people.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>用postman可以设置请求体，<img src="../images/image-20240316141654005.png" alt="image-20240316141654005" style="zoom:33%;" /></p>
+<p>结果：&gt;HTTP状态 415 - 不支持的媒体类型</p>
+<ul>
+<li>因为java原生的api只支持param参数和路径参数，json属于前端格式</li>
+<li><u>solution：</u><ul>
+<li>①导入json处理依赖[jackson-databind]  </li>
+<li><u>②给HandleiAdapter配置json转化器  [<strong>在配置类上加</strong><code>@EnableWebMvc</code>注解]</u></li>
+</ul>
+</li>
+</ul>
+<p>结果：<img src="../images/image-20240316142601851.png" alt="image-20240316142601851" style="zoom:33%;" /></p>
+<hr>
+<p><code>@EnableWebMvc</code>相当于添加一个HandlerAdapter和HandlerMapping，还给HandleiAdapter配置json转化器</p>
+<ul>
+<li>所以配置类加了<code>@EnableWebMvc</code>注解后可以不写HandlerAdapter和HandlerMapping的bean</li>
+</ul>
+<h3 id="4-接收cookie"><a href="#4-接收cookie" class="headerlink" title="4.接收cookie"></a>4.接收cookie</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 先访问save的地址生成cookie，再访问data来获取cookie中的数据</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;cookie&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CookieController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;data&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">cookie</span><span class="params">(<span class="meta">@CookieValue(value=&quot;cookieName&quot;)</span> String value)</span>&#123;<span class="comment">//value=&quot;&quot;指定了形参对应名字的cookie</span></span><br><span class="line">        System.out.println(value);</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;save&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">save</span><span class="params">(HttpServletResponse response)</span>&#123;</span><br><span class="line">        <span class="type">Cookie</span> <span class="variable">cookie</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cookie</span>(<span class="string">&quot;cookieName&quot;</span>, <span class="string">&quot;root-purin&quot;</span>);</span><br><span class="line">        response.addCookie(cookie);</span><br><span class="line">        <span class="comment">//响应时会发送一个cokkie存在客户端，下次客户端再访问时就会带着cookie</span></span><br><span class="line">        <span class="keyword">return</span><span class="string">&quot;ok&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在开发者工具中查看请求头可以看见：<code>Cookie: cookieName=root-purin;</code> </p>
+<h1 id="三，springmvc响应数据"><a href="#三，springmvc响应数据" class="headerlink" title="三，springmvc响应数据"></a>三，springmvc响应数据</h1><h2 id="1-返回视图（jsp为例）"><a href="#1-返回视图（jsp为例）" class="headerlink" title="1.返回视图（jsp为例）"></a>1.返回视图（jsp为例）</h2><p>1.导jstl的依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jakarta.servlet.jsp.jstl<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jakarta.servlet.jsp.jstl-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.jsp页面【写在WEB-INF目录下，外部无法随便访问</p>
+<p>文件结构：<img src="../images/image-20240316165157397.png" alt="image-20240316165157397" style="zoom:33%;" /></p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;hello jsp&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;jsp写在WEB-INF下一般不配置是无法访问的。..&lt;/p&gt;</span><br><span class="line">    &lt;font color=<span class="string">&quot;#7fffd4&quot;</span>&gt;$&#123;data&#125;&lt;/font&gt;&lt;%--从共享域中取--%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>${data}从共享域中取，放的操作在java代码中完成</li>
+</ul>
+<p>3.配置类，<strong>实现一个xxx接口，重写xxx方法</strong>，快速<strong>添加前缀后缀</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;jsp&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureViewResolvers</span><span class="params">(ViewResolverRegistry registry)</span> &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        * registry可以快速添加前后缀</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line">        registry.jsp(<span class="string">&quot;/WEB-INF/views/&quot;</span>,<span class="string">&quot;.jsp&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.初始化类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class MvcInit extends AbstractAnnotationConfigDispatcherServletInitializer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected Class&lt;?&gt;[] getRootConfigClasses() &#123;</span><br><span class="line">        return new Class[0];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected Class&lt;?&gt;[] getServletConfigClasses() &#123;</span><br><span class="line">        return new Class[]&#123;MvcConfig.class&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected String[] getServletMappings() &#123;</span><br><span class="line">        return new String[]&#123;&quot;/&quot;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.控制器Controller</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;jsp&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JspController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;index&quot;)</span><span class="comment">//只是对外界的访问路径</span></span><br><span class="line">    <span class="comment">//这次没加RequestBody注解，因为这次利用拼接形成一个具体jsp的路径，返回的就是前端视图</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">data</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;jsp.index()&quot;</span>);</span><br><span class="line">        request.setAttribute(<span class="string">&quot;data&quot;</span>,<span class="string">&quot;this is data---purin&quot;</span>);<span class="comment">//放到共享域中</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;<span class="comment">//其实加上前后缀之后是“/WEB-INF/views/index.jsp”，返回该视图</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> return “index”; 通过前缀后缀拼接定位到对应的jsp，返回了前端页面</p>
+</blockquote>
+<h2 id="2-转发和重定向"><a href="#2-转发和重定向" class="headerlink" title="2.转发和重定向"></a>2.转发和重定向</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*请求转发</span></span><br><span class="line"><span class="comment">       - 直接return“forward:想去的访问路径”*/</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;forward&quot;)</span><span class="comment">//访问这个方法的路径</span></span><br><span class="line">   <span class="keyword">public</span>  String <span class="title function_">forward</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;forward:/jsp/index&quot;</span>;<span class="comment">//转发的路径</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/*重定向 */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;redirect&quot;)</span></span><br><span class="line">   <span class="keyword">public</span>  String <span class="title function_">redirect</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;redirect:/jsp/index&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<img src="../images/image-20240316170708099.png" alt="image-20240316170708099" style="zoom:50%;" />
+
+<ul>
+<li>转发：项目下的资源跳转</li>
+<li>重定向：（二次请求）可以是项目外的<ul>
+<li>没用springmvc时，路径要写项目下的全地址</li>
+<li>用springmvc重定向项目外地址belike：<code>return &quot;redirect:https://www.bilibili.com&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-返回JSON数据"><a href="#3-返回JSON数据" class="headerlink" title="3.返回JSON数据"></a>3.返回JSON数据</h2><img src="../images/image-20240316172403313.png" alt="image-20240316172403313" style="zoom:50%;" />
+
+<ul>
+<li>接收json数据：<ul>
+<li>在形参上加@Re<strong>quest</strong>Body注解</li>
+<li>形参是实体类</li>
+</ul>
+</li>
+<li>响应json数据<ul>
+<li>返回类型为实体类</li>
+<li>方法上加@Res<strong>ponse</strong>Body</li>
+<li>HandlerAdapter把返回的实体java对象转化成 json字符，又因为有@ResponseBody注解，所以不会去找视图解释器，直接返回json字符串</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;json&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JsonController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;data&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">data</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setName(<span class="string">&quot;purin&quot;</span>);</span><br><span class="line">        user.setAge(<span class="number">20</span>);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;data02&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">data02</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setName(<span class="string">&quot;purin02&quot;</span>);</span><br><span class="line">        user.setAge(<span class="number">21</span>);</span><br><span class="line">        List&lt;User&gt;users=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        users.add(user);</span><br><span class="line">        <span class="keyword">return</span> users;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问路径：<code>http://localhost:8080/json/data</code> , 结果：<code>&#123;&quot;name&quot;:&quot;purin&quot;,&quot;age&quot;:20&#125;</code>(成功响应成json数据)</p>
+<p><code>http://localhost:8080/json/data02</code> —–&gt;<code>[&#123;&quot;name&quot;:&quot;purin02&quot;,&quot;age&quot;:21&#125;]</code></p>
+<hr>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><code>@RestController</code>&#x3D;<code>@Controller</code>+<code>@ResponseBody</code></p>
+<p>@ResponseBody：数据直接放到<code>响应体</code>带回，不走视图解析器查找视图(返回jsp)，也不能转发和重定向</p>
+<h2 id="4-返回静态资源"><a href="#4-返回静态资源" class="headerlink" title="4.返回静态资源"></a>4.返回静态资源</h2><ul>
+<li><p>静态资源不能放在WEB-INF下（外部访问不了</p>
+</li>
+<li><p>发现部署项目后无法通过  …8080&#x2F;imgs&#x2F;img1.png访问，因为↓</p>
+<ul>
+<li><img src="../images/image-20240316175553868.png" alt="image-20240316175553868" style="zoom:50%;" /></li>
+<li>DispatcherServlet先去秘书HandlerMapping找是否有对应路径的handler（方法），然后才访问，而图片等静态资源没有handler</li>
+</ul>
+</li>
+<li><p>solution：<strong>配置类里写</strong>xxx，开启<strong>静态资源查找</strong></p>
+<ul>
+<li><pre><code class="java">@Override
+//开启静态资源查找
+//DispatcherServlet---&gt;HandlerMapping去找有没有对应的handler--》没有--》查找静态资源
+public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer)&#123;
+    configurer.enable();
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">访问成功：&lt;img src=&quot;../images/image-20240316181421636.png&quot; alt=&quot;image-20240316181421636&quot; style=&quot;zoom:33%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">相当于给DispatcherSservlet又配了一个DefaultServletHandler，而这个Handler查找的内部实现是用forward()转发</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../images/image-20240316183557606.png&quot; alt=&quot;image-20240316183557606&quot; style=&quot;zoom:33%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">源码：</span><br><span class="line"></span><br><span class="line">1.&lt;img src=&quot;../images/image-20240316183634582.png&quot; alt=&quot;image-20240316183634582&quot; style=&quot;zoom:33%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">一路ctrl＋点击</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../images/image-20240316183655078.png&quot; alt=&quot;image-20240316183655078&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../images/image-20240316183717472.png&quot; alt=&quot;image-20240316183717472&quot; style=&quot;zoom:33%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../images/image-20240316183740816.png&quot; alt=&quot;image-20240316183740816&quot; style=&quot;zoom:33%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">2.进入`DefaultServletHttpRequestHandler`：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public class DefaultServletHttpRequestHandler implements HttpRequestHandler, ServletContextAware &#123;</span><br><span class="line">    .........</span><br><span class="line"></span><br><span class="line">    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        Assert.state(this.servletContext != null, &quot;No ServletContext set&quot;);</span><br><span class="line">        RequestDispatcher rd = this.servletContext.getNamedDispatcher(this.defaultServletName);</span><br><span class="line">        if (rd == null) &#123;</span><br><span class="line">            throw new IllegalStateException(&quot;A RequestDispatcher could not be located for the default servlet &#x27;&quot; + this.defaultServletName + &quot;&#x27;&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            rd.forward(request, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>发现查找是用forward()转发</p>
+<h1 id="四、restful风格"><a href="#四、restful风格" class="headerlink" title="四、restful风格"></a>四、restful风格</h1><ul>
+<li><p>对路径（url），请求参数，请求路径 的设计的规范</p>
+</li>
+<li><p>url用名词写，不暴露动词</p>
+</li>
+<li><p>url地址虽然可能重复，但是请求方式不一样也不算是同一个</p>
+</li>
+</ul>
+<img src="../images/image-20240318192027250.png" alt="image-20240318192027250" style="zoom:50%;" />
+
+<h1 id="五，声明式异常处理"><a href="#五，声明式异常处理" class="headerlink" title="五，声明式异常处理"></a>五，声明式异常处理</h1><ul>
+<li><p>原来：在业务代码里写异常处理</p>
+</li>
+<li><p>现：把异常处理的代码提取出来</p>
+</li>
+<li><p>发生异常时交由专门的异常处理Handler</p>
+</li>
+<li><pre><code class="java">//发生异常时，会走此类的handler，一个一个匹配，找到了(异常类型匹配)就over
+@RestControllerAdvice//=ResponseBody+ControllerAdvice
+public class GlobalExceptionHandler &#123;
+
+    @ExceptionHandler
+    public Object ArithmeticExceptionHandler(ArithmeticException e)&#123;
+        String s=e.getMessage();
+        System.out.println(&quot;exception message:&quot;+s);
+        return s;
+    &#125;
+    @ExceptionHandler
+    public Object ExceptionHandler(Exception e)&#123;
+        String s=e.getMessage();
+        System.out.println(&quot;exception message:&quot;+s);
+        return s;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<hr>
+<img src="../images/image-20240318202432713.png" alt="image-20240318202432713" style="zoom:33%;" />
+
+<img src="../images/image-20240318203746163.png" alt="image-20240318203746163" style="zoom:33%;" />
+
+<h1 id="校验注解"><a href="#校验注解" class="headerlink" title="校验注解"></a>校验注解</h1><p>视频没看，用的时候再补</p>
 
         
       </div>
