@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>nowcoderCommunity | Purin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="·&#x2F;  日程记录：2024年3月24日 springmvc入门 2024年3月25日 mybatis入门（我的test代码总报错也没搜到解决方案，就先拿视频源码直接用了 3.26 首页（没加分页 3.27早上 解决了昨天的错误 3.28 首页（加了分页）  报错记录1.https:&#x2F;&#x2F;www.cnblogs.com&#x2F;aojun&#x2F;p&#x2F;14359464.html  从中学到该看“cause">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nowcoderCommunity">
+<meta property="og:url" content="https://spuriny.github.io/2024/03/22/nowcoderCommunity/index.html">
+<meta property="og:site_name" content="Purin&#39;s blog">
+<meta property="og:description" content="·&#x2F;  日程记录：2024年3月24日 springmvc入门 2024年3月25日 mybatis入门（我的test代码总报错也没搜到解决方案，就先拿视频源码直接用了 3.26 首页（没加分页 3.27早上 解决了昨天的错误 3.28 首页（加了分页）  报错记录1.https:&#x2F;&#x2F;www.cnblogs.com&#x2F;aojun&#x2F;p&#x2F;14359464.html  从中学到该看“cause">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240327080253061.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240324091848926.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240325085432166.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240325085559606.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240325094222286.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240328110823273.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240328121423745.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/03/22/images/image-20240329231951610.png">
+<meta property="article:published_time" content="2024-03-22T11:34:09.000Z">
+<meta property="article:modified_time" content="2024-03-29T15:23:47.362Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://spuriny.github.io/2024/03/22/images/image-20240327080253061.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Purin's blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/FPbhxHyaUAIkHwN.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Purin's blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories">Categories</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/categories">Categories</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/113333105_p0_master1200.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">purin </div>
+      <div class="dot"></div>
+      <div class="subtitle">習慣は第二の天性なり </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com/purins15" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://peing.net/zh-CN/puriny" title="peing"><i class="fa-solid fa-pencil"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/SPURINY" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box"></div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/doc/" rel="tag">doc</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm/" rel="tag">ssm</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm-mybatis/" rel="tag">ssm mybatis</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/test-tag2/" rel="tag">test tag2</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AC%94%E8%AF%95/" rel="tag">笔试</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2024/03 ">
+          March 2024 
+          <div class="archive-count">11 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/12 ">
+          December 2023 
+          <div class="archive-count">3 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/11 ">
+          November 2023 
+          <div class="archive-count">5 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2024/03/30/%E7%AC%94%E8%AF%95%E9%A2%98%E3%80%90%E5%88%B7%E9%A2%98%E8%8A%82%E3%80%9158%E9%9B%86%E5%9B%A223%E6%A0%A1%E6%8B%9B%E5%90%8E%E7%AB%AF-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%8D%B7/" title="笔试题【刷题节】58集团23校招后端/移动端工程师卷" >
+            <div class="recent-link-text">
+              笔试题【刷题节】58集团23校招后端/移动端工程师卷
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/25/py-note/" title="py note" >
+            <div class="recent-link-text">
+              py note
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/22/nowcoderCommunity/" title="nowcoderCommunity" >
+            <div class="recent-link-text">
+              nowcoderCommunity
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/20/springboot/" title="springboot" >
+            <div class="recent-link-text">
+              springboot
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/20/ssm-%E6%95%B4%E5%90%88/" title="ssm-整合" >
+            <div class="recent-link-text">
+              ssm-整合
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-nowcoderCommunity" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        nowcoderCommunity
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-03-22T11:34:09.000Z" itemprop="datePublished">2024-03-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <hr>
+<p>·&#x2F;</p>
+<hr>
+<h1 id="日程记录："><a href="#日程记录：" class="headerlink" title="日程记录："></a>日程记录：</h1><p>2024年3月24日 springmvc入门</p>
+<p>2024年3月25日 mybatis入门（我的test代码总报错也没搜到解决方案，就先拿视频源码直接用了</p>
+<p>3.26 首页（没加分页</p>
+<p>3.27早上 解决了昨天的错误</p>
+<p>3.28 首页（加了分页）</p>
+<hr>
+<h1 id="报错记录"><a href="#报错记录" class="headerlink" title="报错记录"></a>报错记录</h1><p>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/aojun/p/14359464.html">https://www.cnblogs.com/aojun/p/14359464.html</a></p>
+<ul>
+<li>从中学到该看“<code>caused by</code>”</li>
+</ul>
+<img src="../images/image-20240327080253061.png" alt="image-20240327080253061" style="zoom:50%;" />
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44447330/article/details/122291201">https://blog.csdn.net/weixin_44447330/article/details/122291201</a></p>
+<ul>
+<li><p>null导致的可能性</p>
+<ul>
+<li><p>发现我确实没写list判断是否为空的语句，就直接去遍历list，修改后：</p>
+</li>
+<li><pre><code class="java">if (list != null) &#123;//
+    for (DiscussPost i : list) &#123;
+        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;post&quot;, i);//把帖子数据放入map
+        User user = userService.getUser(i.getId());//获取id对应的用户实体对象
+        System.out.println(user.toString());//
+        map.put(&quot;user&quot;, user);//把用户数据放入map
+        posts.add(map);//把map放入posts列表
+    &#125;
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 顺便加了个`System.out.println(user.toString());`看看有没有user为空的可能性</span><br><span class="line"></span><br><span class="line">- 然后变成：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+Wed Mar 27 08:11:19 CST 2024
+There was an unexpected error (type=Internal Server Error, status=500).
+Cannot invoke &quot;com.nowcoder.community.entity.User.toString()&quot; because &quot;user&quot; is null
+java.lang.NullPointerException: Cannot invoke &quot;com.nowcoder.community.entity.User.toString()&quot; because &quot;user&quot; is null
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  看来确实是user为空</span><br><span class="line"></span><br><span class="line">  - 后来打印`i.getId()`输出200+，翻看数据表发现和userid对不起来，倒是像帖子id，然后定睛一看：&lt;u&gt;获取用户id要用`getUserId()`&lt;/u&gt;，，嗯嗯很无语，说明帖子id用pid命名的重要性，，，</span><br><span class="line"></span><br><span class="line">然后就成功加载主页了&lt;img src=&quot;../images/image-20240327085834737.png&quot; alt=&quot;image-20240327085834737&quot; style=&quot;zoom: 33%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">2.@Mapper正常，但换成@Reposity无法启动</span><br><span class="line"></span><br><span class="line">[@mapper换成@repository后无法注入-CSDN社区](https://bbs.csdn.net/topics/392444913)</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line"># springmvc入门</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../images/image-20240324073558950.png&quot; alt=&quot;image-20240324073558950&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">- springmvc中所有组件由**DispatcherServlet调用**</span><br><span class="line">- 三层架构≠mvc</span><br><span class="line">  - 请求到达表现层，表现层调用业务层，层层往下；表现层接收到查询的数据，controller封装成model，DiapatcherServlet交给view渲染页面</span><br><span class="line"></span><br><span class="line">![image-20240324074404444](../images/image-20240324074404444.png)</span><br><span class="line"></span><br><span class="line">- 前端控制器(DispatcherServlet) 调用流程：</span><br><span class="line">- ![image-20240324074510836](../images/image-20240324074510836.png)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">模板引擎--生成动态html</span><br><span class="line"></span><br><span class="line">[Thymeleaf](https://www.thymeleaf.org/)</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../images/image-20240324074918034.png&quot; alt=&quot;image-20240324074918034&quot; style=&quot;zoom:33%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">在application.properties里：</span><br><span class="line"></span><br><span class="line">```properties</span><br><span class="line">#开发时关闭thymelaefa缓存，避免页面没及时刷新；项目上线后开启，降低服务器负担</span><br><span class="line">spring.thymeleaf.cache=false</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>ctrl+n搜索ThymeleafAutoConfiguration：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="meta">@EnableConfigurationProperties(&#123;ThymeleafProperties.class&#125;)</span><span class="comment">//详细参数的配置</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThymeleafAutoConfiguration</span> &#123;</span><br></pre></td></tr></table></figure>
+
+<p>进入ThymeleafProperties.class：</p>
+<pre><code>- 在配置里写`spring.thymeleaf.cache`相当于给`ThymeleafProperties`类的cache属性赋值
+- server同理，搜`ServerProperties`查看即可
+</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties(</span></span><br><span class="line"><span class="meta">    prefix = &quot;spring.thymeleaf&quot;//前缀</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThymeleafProperties</span> &#123;</span><br><span class="line">    。。。</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> cache;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>@ResponseBody的作用其实是将java对象转为json格式的数据。写入到response对象的body区，通常用来返回JSON数据或者是XML数据。</li>
+<li>使用此注解之后不会再走视图处理器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 此方法利用servlet在页面输出，所以没加@ResponseBody</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;http&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">http</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span>&#123;</span><br><span class="line">        System.out.println(request.getServletPath());</span><br><span class="line">        System.out.println(request.getMethod());</span><br><span class="line">        Enumeration&lt;String&gt; headerNames = request.getHeaderNames();</span><br><span class="line">        <span class="keyword">while</span>(headerNames.hasMoreElements())&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> headerNames.nextElement();</span><br><span class="line">            <span class="type">String</span> <span class="variable">header</span> <span class="operator">=</span> request.getHeader(name);</span><br><span class="line">            System.out.println(name+<span class="string">&quot;:&quot;</span>+header);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(request.getParameter(<span class="string">&quot;code&quot;</span>));</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">PrintWriter</span> <span class="variable">writer</span> <span class="operator">=</span> response.getWriter();</span><br><span class="line">            writer.write(<span class="string">&quot;&lt;h1&gt;nowcode&lt;/h1&gt;&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>请求方式post</p>
+<img src="../images/image-20240324091848926.png" alt="image-20240324091848926" style="zoom:33%;" />
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/hello/student&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* post方式，访问/html/post.html并提交表单后交由student()处理</span></span><br><span class="line"><span class="comment">* 放在static目录下，但是访问路径不用加/static</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;student&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">student</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>响应html</p>
+<ul>
+<li>在templates目录下创建模板文件</li>
+</ul>
+<img src="../images/image-20240325085432166.png" alt="image-20240325085432166" style="zoom:33%;" />
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--声明这个html是thymeleaf模板--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--从model中取对应属性，放到段落中--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>写controller中对应的handler</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    响应html</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(path=&quot;teacher&quot;,method = RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> ModelAndView <span class="title function_">getTeacher</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>();<span class="comment">//model</span></span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;lily&quot;</span>);</span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;age&quot;</span>,<span class="number">29</span>);</span><br><span class="line">    <span class="comment">//model和view的数据都装到了一个对象里</span></span><br><span class="line">    modelAndView.setViewName(<span class="string">&quot;/demo/view&quot;</span>);</span><br><span class="line">    <span class="comment">//视图的路径，模板文件的路径，即/templates/demo/view.html</span></span><br><span class="line">    <span class="keyword">return</span> modelAndView;<span class="comment">//返回model</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>访问实例：</li>
+</ul>
+<img src="../images/image-20240325085559606.png" alt="image-20240325085559606" style="zoom:50%;" />
+
+<p>易知返回的是html页面，模板把${name}替换成了具体内容</p>
+<hr>
+<p>响应html方式2</p>
+<ul>
+<li><p>模板文件同上</p>
+</li>
+<li><pre><code class="java">/*响应html2*/
+    @RequestMapping(path=&quot;school&quot;,method = RequestMethod.GET)
+    public String getSchool(Model model)&#123;//DispatcherServlet帮忙创建的model
+        //返回类型String是因为 返回视图文件的路径
+        model.addAttribute(&quot;name&quot;,&quot;tokyodaigaku&quot;);
+        return &quot;/demo/view&quot;;
+    &#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  ---------</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line">返回Json数据【常用于异步请求】</span><br><span class="line"></span><br><span class="line">&gt; 异步请求：页面不刷新，但是悄悄访问了服务器（如：注册时填写完nickname，没刷新页面却显示了xx昵称已被使用--&gt;访问了数据库--&gt;一般结果不会是html页面，只是判断的结果）</span><br><span class="line"></span><br><span class="line">&gt; java对象-&gt;JSON字符串-&gt;JS对象【json起衔接转化作用】</span><br><span class="line"></span><br><span class="line">- 返回JSON数据，handler必须加`@ResponseBody`否则会以为是html页面</span><br><span class="line"></span><br><span class="line">- handler</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">/*响应JSON数据*/</span><br><span class="line">    @RequestMapping(&quot;json&quot;)</span><br><span class="line">    @ResponseBody</span><br><span class="line">    public Map&lt;String,Object&gt; getjson()&#123;</span><br><span class="line">        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(&quot;name&quot;,&quot;purin&quot;);</span><br><span class="line">        map.put(&quot;age&quot;,&quot;close to 21&quot;);</span><br><span class="line">        map.put(&quot;language&quot;,&quot;cn-en-jp&quot;);</span><br><span class="line">        return map;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>结果：</p>
+</li>
+</ul>
+<p>响应类型：<code>Content-Type:application/json</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;name&quot;:&quot;purin&quot;,&quot;language&quot;:&quot;cn-en-jp&quot;,&quot;age&quot;:&quot;close to 21&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="mybatis入门"><a href="#mybatis入门" class="headerlink" title="mybatis入门"></a>mybatis入门</h1><img src="../images/image-20240325094222286.png" alt="image-20240325094222286" style="zoom:50%;" />
+
+<ul>
+<li>在springboot中前三个核心组件被集成了，不需要人为来写</li>
+</ul>
+<hr>
+<ul>
+<li>application.properties里写数据源和数据库连接配置</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DataSourceProperties</span></span><br><span class="line"><span class="attr">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="attr">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/community?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Hongkong</span></span><br><span class="line"><span class="attr">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.password</span>=<span class="string">666</span></span><br><span class="line"><span class="attr">spring.datasource.type</span>=<span class="string">com.zaxxer.hikari.HikariDataSource</span></span><br><span class="line"><span class="attr">spring.datasource.hikari.maximum-pool-size</span>=<span class="string">15</span></span><br><span class="line"><span class="attr">spring.datasource.hikari.minimum-idle</span>=<span class="string">5</span></span><br><span class="line"><span class="attr">spring.datasource.hikari.idle-timeout</span>=<span class="string">30000</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># MybatisProperties</span></span><br><span class="line"><span class="attr">mybatis.mapper-locations</span>=<span class="string">classpath:mapper/*.xml</span></span><br><span class="line"><span class="attr">mybatis.type-aliases-package</span>=<span class="string">com.nowcoder.community.entity</span></span><br><span class="line"><span class="attr">mybatis.configuration.useGeneratedKeys</span>=<span class="string">true</span></span><br><span class="line"><span class="attr">mybatis.configuration.mapUnderscoreToCamelCase</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他步骤和之前mybatis一样</li>
+</ul>
+<hr>
+<ul>
+<li><p>复用sql：</p>
+<ul>
+<li><p>提取出常用的字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;sql id=&quot;insertFields&quot;&gt;</span><br><span class="line">        username, password, salt, email, type, status, activation_code, header_url, create_time</span><br><span class="line">    &lt;/sql&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用：&lt; include&gt;&lt; &#x2F;include&gt;</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into user (&lt;include refid=&quot;insertFields&quot;&gt;&lt;/include&gt;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># logger</span></span><br><span class="line"><span class="attr">logging.level.com.nowcoder.community</span>=<span class="string">debug</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把这个包的级别调为debug，这样控制台还会显示sql预编译的样子</li>
+</ul>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User&#123;id=101, username=&#x27;liubei&#x27;, password=&#x27;390ba5f6b5f18dd4c63d7cda170a0c74&#x27;, salt=&#x27;12345&#x27;, email=&#x27;nowcoder101@sina.com&#x27;, type=0, status=1, activationCode=&#x27;null&#x27;, headerUrl=&#x27;http://images.nowcoder.com/head/100t.png&#x27;, createTime=Wed Apr 03 12:04:55 CST 2019&#125;</span><br><span class="line">==&gt;  Preparing: select id, username, password, salt, email, type, status, activation_code, header_url, create_time from user where email = ? </span><br><span class="line">==&gt; Parameters: nowcoder101@sina.com(String)</span><br><span class="line">&lt;==      Total: 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h1 id="开发首页"><a href="#开发首页" class="headerlink" title="开发首页"></a>开发首页</h1><ul>
+<li>先做不考虑分页的版本</li>
+<li>再加上分页</li>
+</ul>
+<p>controller:</p>
+<p>写方法的时候要想到以后加分页的可能性来去设计</p>
+<p>由于Post对象只有userid，而username具体在User对象里，所以一起放到map里了</p>
+<p>DispatcherServlet自动生成参数里的model对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(path = &quot;/index&quot;, method = RequestMethod.GET)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">getIndexPage</span><span class="params">(Model model)</span>&#123;<span class="comment">//使用模板</span></span><br><span class="line">         <span class="comment">//这个查出来的post数据只有userid，没有username，所以后面用userService查出user，一起放map里了</span></span><br><span class="line">       List&lt;DiscussPost&gt; list = discussPostService.selectDiscussPosts(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">       List&lt;Map&lt;String,Object&gt;&gt; posts = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (list != <span class="literal">null</span>) &#123;</span><br><span class="line">           <span class="keyword">for</span> (DiscussPost i : list) &#123;</span><br><span class="line">               Map&lt;String, Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">               <span class="comment">//System.out.println(i.toString());</span></span><br><span class="line">               map.put(<span class="string">&quot;post&quot;</span>, i);<span class="comment">//把帖子数据放入map</span></span><br><span class="line">               <span class="comment">//System.out.println(i.getId());</span></span><br><span class="line">               <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userService.getUser(i.getUserId());<span class="comment">//获取id对应的用户实体对象</span></span><br><span class="line">               System.out.println(user.toString());</span><br><span class="line">               map.put(<span class="string">&quot;user&quot;</span>, user);<span class="comment">//把用户数据放入map</span></span><br><span class="line"></span><br><span class="line">               posts.add(map);<span class="comment">//把map放入posts列表</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       model.addAttribute(<span class="string">&quot;posts&quot;</span>,posts);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;<span class="comment">//模板文件路径</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>帖子列表部分</p>
+<ul>
+<li>需要动态拼接的加<code>th:</code>表示用thymeleaf语法</li>
+<li>${map.user.headerUrl}看着像访问属性，其实<code>底层是调用了getXXX()</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 帖子列表 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list-unstyled&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;media pb-3 pt-3 mb-3 border-bottom&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;map:$&#123;posts&#125;&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--$&#123;posts&#125;是model.addAtri的-;&quot;map:&quot;表示每次循环得到一个map--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;site/profile.html&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--利用模板语法，写动态的内容--&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--map.user.headerUrl写着是xx.xx.xx其实底层调用getXXX()--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">th:src</span>=<span class="string">&quot;$&#123;map.user.headerUrl&#125;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;mr-4 rounded-circle&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;用户头像&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width:50px;height:50px;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;media-body&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h6</span> <span class="attr">class</span>=<span class="string">&quot;mt-0 mb-3&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">th:utext</span>=<span class="string">&quot;$&#123;map.post.title&#125;&quot;</span>&gt;</span>备战春招，面试刷题跟他复习，一个月全搞定！<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;badge badge-secondary bg-primary&quot;</span> <span class="attr">th:if</span>=<span class="string">&quot;$&#123;map.post.type==1&#125;&quot;</span>&gt;</span>置顶<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="comment">&lt;!--加判断--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;badge badge-secondary bg-danger&quot;</span> <span class="attr">th:if</span>=<span class="string">&quot;$&#123;map.post.status==1&#125;&quot;</span>&gt;</span>精华<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;text-muted font-size-12&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">u</span> <span class="attr">class</span>=<span class="string">&quot;mr-3&quot;</span> <span class="attr">th:utext</span>=<span class="string">&quot;$&#123;map.user.username&#125;&quot;</span>&gt;</span>寒江雪<span class="tag">&lt;/<span class="name">u</span>&gt;</span> 发布于 <span class="tag">&lt;<span class="name">b</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#dates.format(map.post.createTime,&#x27;yyyy-MM-dd HH:mm:ss&#x27;)&#125;&quot;</span>&gt;</span>2019-04-15 15:32:18<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;d-inline float-right&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;d-inline ml-2&quot;</span>&gt;</span>赞 11<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;d-inline ml-2&quot;</span>&gt;</span>|<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;d-inline ml-2&quot;</span>&gt;</span>回帖 7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>						</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>分页部分：</p>
+<ul>
+<li><p><code>dispatcherServlet</code>会自动识别page 把page加到model里，所以可以在${page.xxx}直接用<img src="../images/image-20240328110823273.png" alt="image-20240328110823273" style="zoom:33%;" /></p>
+</li>
+<li><p>Page实体类储存分页信息</p>
+<ul>
+<li>current,limit从页面获取  totalRows,path传给页面</li>
+<li>setter加处理，防止传入奇怪不合理的数</li>
+<li>加方法 ：获得当前页起始行 总页数 起始页 结束页</li>
+</ul>
+</li>
+<li><p>修改controller加入分页后的动态部分</p>
+<ul>
+<li><pre><code class="java">public String getIndexPage(Model model, Page page)&#123;//使用模板
+        page.setPath(&quot;/index&quot;);//复用路径
+        page.setTotalRows(discussPostService.selectDiscussPostRows(0));//总条数
+        List&lt;DiscussPost&gt; list = discussPostService.selectDiscussPosts(0, page.getOffset(), page.getLimit());//根据当前页其实行数和每页条数，查询出当前页的帖子（之前没加分页时是默认第一页
+       
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ```html</span><br><span class="line">  th:href=&quot;@&#123;$&#123;page.path&#125;(current=1)&#125;&lt;!--即&quot;index?current=1&quot;--&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><pre><code class="html">&lt;li th:class=&quot;|page-item $&#123;page.current==1?&#39;disabled&#39;:&#39;&#39;&#125;|&quot;&gt;上一页&lt;/li&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - `||`表示里面有静态的和动态拼接的，上句为：如果当前第一页就disabled,即第一页不能点上一页</span><br><span class="line"></span><br><span class="line">--------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">遇到的问题：不知道为什么，分页部分我的代码的响应体的html从&lt; li&gt;下一页&lt; /li&gt;的下一行开始全是空白，没找到原油就先把源码站过来了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 调试</span><br><span class="line"></span><br><span class="line">服务器打断点--调试状态下：</span><br><span class="line"></span><br><span class="line">- F8 向下一行</span><br><span class="line"></span><br><span class="line">- F7 进入方法内部 再按F8 回去了</span><br><span class="line">- F9 直接到下一个断点处（比如想跳过某循环），如果下面没有断点了就直接结束了</span><br><span class="line"></span><br><span class="line"># 版本控制</span><br><span class="line"></span><br><span class="line">- 本地和远程都有仓库，先提交到本地仓库，再推送给远程仓库</span><br><span class="line">- 本地仓库操作：</span><br><span class="line"></span><br><span class="line">```git</span><br><span class="line">cd d:  切换到d盘</span><br><span class="line">cd 具体目录</span><br><span class="line">git init</span><br><span class="line">git status</span><br><span class="line">git add *  所有的都添加到本地仓库（受管理）【但只是临时存，还需要提交</span><br><span class="line">Git commit -m&#x27;备注&#x27;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>git采用ssl，所以要配密钥（已经弄过了</p>
+</li>
+<li><p>远程仓库操作：</p>
+<ul>
+<li>先在github上建同名仓库</li>
+<li><code>git remote add origin 仓库地址</code>,把本地仓库和远程仓库关联起来，并给远程仓库起别名为origin</li>
+<li><code>git push -u 远程仓库别名 分支名</code><a target="_blank" rel="noopener" href="https://blog.csdn.net/gongdamrgao/article/details/115032436">关于git的问题：error: src refspec main does not match any-CSDN博客</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="社区登录模块"><a href="#社区登录模块" class="headerlink" title="社区登录模块"></a>社区登录模块</h1><h2 id="发邮件"><a href="#发邮件" class="headerlink" title="发邮件"></a>发邮件</h2><img src="../images/image-20240328121423745.png" alt="image-20240328121423745" style="zoom: 33%;" />
+
+
+
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>1.<code>smtps</code>后有一个空格</p>
+<img src="../images/image-20240329231951610.png" alt="image-20240329231951610" style="zoom:33%;" />
+
+
+
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535 5.7.8 authentication failed</span><br></pre></td></tr></table></figure>
+
+<p>properties里发件人密码改成<strong>授权码</strong></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2024/03/25/py-note/"
+      title="py note"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        py note
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2024/03/20/springboot/"
+      title="springboot"
+     >
+
+    <p class="title-text">
+      
+        springboot
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 purin<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
