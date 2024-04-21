@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>linux | Purin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="环境安装安装vm和centos 安装centos: 使用vm创建虚拟机空间(以管理员身份运行) 安装centos(操作系统) centos-6.8下载与安装_centos6.8 下载-CSDN博客       虚拟机的网络连接三种形式： 1.桥接模式   虚拟机的ip也与本机在同一个网段  如图张三也可以和李四的linux系统通讯  如果很多电脑都装了linux，容易ip地址冲突   2.NAT模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="https://spuriny.github.io/2024/04/19/linux/index.html">
+<meta property="og:site_name" content="Purin&#39;s blog">
+<meta property="og:description" content="环境安装安装vm和centos 安装centos: 使用vm创建虚拟机空间(以管理员身份运行) 安装centos(操作系统) centos-6.8下载与安装_centos6.8 下载-CSDN博客       虚拟机的网络连接三种形式： 1.桥接模式   虚拟机的ip也与本机在同一个网段  如图张三也可以和李四的linux系统通讯  如果很多电脑都装了linux，容易ip地址冲突   2.NAT模">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419131731736.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419131849788.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419132248066.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240419134442583.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419200310091.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419205228367.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419205315341.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419205650339.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420113140324.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420113947637.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420115231871.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420115500433.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420115608185.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420115716622.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420121225677.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420121403287.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420121811222.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420122617431.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420122918656.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420123232485.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420123411681.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420124746447.png">
+<meta property="og:image" content="https://spuriny.github.io/images/image-20240420125933905.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420130713447.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420131204862.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420131308901.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420133053508.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420135346982.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420140532295.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420140843455.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420141818274.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420143933712.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420143025655.png">
+<meta property="og:image" content="https://spuriny.github.io/2024/04/19/images/image-20240420144308263.png">
+<meta property="article:published_time" content="2024-04-19T04:31:43.000Z">
+<meta property="article:modified_time" content="2024-04-21T06:33:46.690Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://spuriny.github.io/2024/04/19/images/image-20240419131731736.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Purin's blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/FPbhxHyaUAIkHwN.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Purin's blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories">Categories</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/categories">Categories</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/113333105_p0_master1200.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">purin </div>
+      <div class="dot"></div>
+      <div class="subtitle">習慣は第二の天性なり </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com/purins15" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://peing.net/zh-CN/puriny" title="peing"><i class="fa-solid fa-pencil"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/SPURINY" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box"></div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/doc/" rel="tag">doc</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm/" rel="tag">ssm</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ssm-mybatis/" rel="tag">ssm mybatis</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/test-tag2/" rel="tag">test tag2</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AC%94%E8%AF%95/" rel="tag">笔试</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2024/04 ">
+          April 2024 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2024/03 ">
+          March 2024 
+          <div class="archive-count">12 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/12 ">
+          December 2023 
+          <div class="archive-count">3 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/11 ">
+          November 2023 
+          <div class="archive-count">5 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2024/04/19/linux/" title="linux" >
+            <div class="recent-link-text">
+              linux
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/04/01/%E5%8F%8C%E6%8C%87%E9%92%88/" title="双指针" >
+            <div class="recent-link-text">
+              双指针
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/31/%E5%91%A8%E6%8A%A5/" title="周报" >
+            <div class="recent-link-text">
+              周报
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/30/%E7%AC%94%E8%AF%95%E9%A2%98%E3%80%90%E5%88%B7%E9%A2%98%E8%8A%82%E3%80%9158%E9%9B%86%E5%9B%A223%E6%A0%A1%E6%8B%9B%E5%90%8E%E7%AB%AF-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%8D%B7/" title="笔试题【刷题节】58集团23校招后端/移动端工程师卷" >
+            <div class="recent-link-text">
+              笔试题【刷题节】58集团23校招后端/移动端工程师卷
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2024/03/25/py-note/" title="py note" >
+            <div class="recent-link-text">
+              py note
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-linux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        linux
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-04-19T04:31:43.000Z" itemprop="datePublished">2024-04-19</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.7k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><h2 id="安装vm和centos"><a href="#安装vm和centos" class="headerlink" title="安装vm和centos"></a>安装vm和centos</h2><ul>
+<li>安装centos:<ul>
+<li>使用vm创建虚拟机空间(以管理员身份运行)</li>
+<li>安装centos(操作系统)<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35493457/article/details/105857589">centos-6.8下载与安装_centos6.8 下载-CSDN博客</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>虚拟机的网络连接三种形式：<br><img src="../images/image-20240419131731736.png" alt="image-20240419131731736" style="zoom:33%;" /></p>
+<p>1.桥接模式</p>
+<img src="../images/image-20240419131849788.png" alt="image-20240419131849788" style="zoom:33%;" />
+
+<p>虚拟机的ip也与本机在同一个网段</p>
+<ul>
+<li><p>如图张三也可以和李四的linux系统通讯</p>
+</li>
+<li><p>如果很多电脑都装了linux，<strong>容易ip地址冲突</strong></p>
+</li>
+</ul>
+<p>2.NAT模式</p>
+<img src="../images/image-20240419132248066.png" alt="image-20240419132248066" style="zoom:33%;" />
+
+<ul>
+<li>如图王五的另一个ip对应的linux系统在另一个子网，不会占用192.168.0.0这个子网的ip地址</li>
+</ul>
+<p>3.主机模式：linux系统不能访问外网</p>
+<hr>
+<p>遇到的问题：</p>
+<p><img src="/../images/image-20240419134442583.png" alt="image-20240419134442583"></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yhq-qhh/p/11322869.html">已解决 : VMware Workstation 与 Hyper-V 不兼容。请先从系统中移除 Hyper-V 角色 - 一觀者也 - 博客园 (cnblogs.com)</a></p>
+<h2 id="安装VMwareTools"><a href="#安装VMwareTools" class="headerlink" title="安装VMwareTools"></a>安装VMwareTools</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/williamcsj/article/details/121019391">VMware——VMware Tools的介绍及安装方法_wmware tools-CSDN博客</a></p>
+<h3 id="bugs"><a href="#bugs" class="headerlink" title="bugs:"></a>bugs:</h3><ol>
+<li></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@MT:/home/dnt/vmware-tools-distrib# ./vmware*.pl</span><br><span class="line">A previous installation of VMware Tools has been detected.</span><br><span class="line"></span><br><span class="line">The previous installation was made by the tar installer (version 4).</span><br><span class="line"></span><br><span class="line">Keeping the tar4 installer database format.</span><br><span class="line"></span><br><span class="line">You have a version of VMware Tools installed. Continuing this install will</span><br><span class="line">first uninstall the currently installed version. Do you wish to continue?</span><br><span class="line">(yes/no) [yes]</span><br><span class="line"></span><br><span class="line">Error: Unable to find the binary installation directory (answer BINDIR)</span><br><span class="line">in the installer database file &quot;/etc/vmware-tools/locations&quot;.</span><br><span class="line"></span><br><span class="line">Uninstall failed. Please correct the failure and re run the install.</span><br><span class="line"></span><br><span class="line">Execution aborted.</span><br></pre></td></tr></table></figure>
+
+<p>solution:</p>
+<img src="../images/image-20240419200310091.png" alt="image-20240419200310091" style="zoom:33%;" />
+
+<p>然后重新运行vmware-install.pl</p>
+<p>2.安装好了也没能从windows复制内容到centos</p>
+<p>solution：重启虚拟机</p>
+<p>3.<strong>字和图标太小了</strong>，眼快看瞎了</p>
+<p>solution:[Linux学习P3：调整CentOS的图标和字体大小_centos字体大小-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/Owner_/article/details/116496216#:~:text=%E7%82%B9%E5%87%BB%E8%AE%A1%E7%AE%97%E6%9C%BA%3A">https://blog.csdn.net/Owner_/article/details/116496216#:~:text=点击计算机%3A</a> 找到编辑-&gt;首选项： 在图标视图默认值中，修改默认缩放级别即可修改桌面图标大小了。,potter_ 文章浏览阅读5.2k次，点赞2次，收藏13次。 安装完CentOS后，发现桌面，图标和字体都太小，如下图所示%3A解决方法如下%3AⅠ.调整桌面大小%3A1).安装VMware Tools。)</p>
+<hr>
+<h1 id="linux目录结构"><a href="#linux目录结构" class="headerlink" title="linux目录结构"></a>linux目录结构</h1><ul>
+<li>在linux里一切皆文件。就连硬件也能对应到文件目录</li>
+<li>linux只有一个根目录</li>
+<li>哪个目录放什么内容是规定好的</li>
+<li>那个目录下存什么内容要知道</li>
+</ul>
+<img src="../images/image-20240419205228367.png" alt="image-20240419205228367" style="zoom:33%;" />
+
+<p>对应文件系统的各个目录：</p>
+<img src="../images/image-20240419205315341.png" alt="image-20240419205315341" style="zoom:33%;" />
+
+<h1 id="远程登陆"><a href="#远程登陆" class="headerlink" title="远程登陆"></a>远程登陆</h1><p>xshell:远程登陆到linux的工具</p>
+<img src="../images/image-20240419205650339.png" alt="image-20240419205650339" style="zoom:33%;" />
+
+<img src="../images/image-20240420113140324.png" alt="image-20240420113140324" style="zoom:33%;" />
+
+<h2 id="安装xshell5"><a href="#安装xshell5" class="headerlink" title="安装xshell5"></a>安装xshell5</h2><img src="../images/image-20240420113947637.png" alt="image-20240420113947637" style="zoom:33%;" />
+
+<ul>
+<li>检查sshd服务是否开启：linux终端输<code>setup</code>-&gt;系统服务（带*号的已开启</li>
+</ul>
+<p>sshd服务监听22号端口</p>
+<ul>
+<li>linux系统处于<strong>联网</strong>状态下＋<code>ifconfig</code>能<strong>查看linux的ip</strong>:</li>
+</ul>
+<img src="../images/image-20240420115231871.png" alt="image-20240420115231871" style="zoom:33%;" />
+
+<ul>
+<li>打开xshell新建会话</li>
+</ul>
+<img src="../images/image-20240420115500433.png" alt="image-20240420115500433" style="zoom:33%;" />
+
+<p>配linux的ip地址</p>
+<img src="../images/image-20240420115608185.png" alt="image-20240420115608185" style="zoom:33%;" />
+
+<p>点击该会话-&gt;连接-&gt;登录linux账号-&gt;:</p>
+<img src="../images/image-20240420115716622.png" alt="image-20240420115716622" style="zoom:33%;" />
+
+<h2 id="远程上传下载文件xftp5"><a href="#远程上传下载文件xftp5" class="headerlink" title="远程上传下载文件xftp5"></a>远程上传下载文件xftp5</h2><p>配置过程类xshell5</p>
+<p>打开后自动进入用户名：root的根目录下了：</p>
+<img src="../images/image-20240420121225677.png" alt="image-20240420121225677" style="zoom:33%;" />
+
+<ul>
+<li>解决乱码：<img src="../images/image-20240420121403287.png" alt="image-20240420121403287" style="zoom:33%;" /></li>
+<li>通过“传输”实现windows和linux间传输文件【去linux的<strong>root目录</strong>下能找到】</li>
+</ul>
+<img src="../images/image-20240420121811222.png" alt="image-20240420121811222" style="zoom:33%;" />
+
+<hr>
+<h1 id="vi和vim编辑器-文本编辑器"><a href="#vi和vim编辑器-文本编辑器" class="headerlink" title="vi和vim编辑器(文本编辑器)"></a>vi和vim编辑器(文本编辑器)</h1><p>三种模式</p>
+<img src="../images/image-20240420122617431.png" alt="image-20240420122617431" style="zoom:33%;" />
+
+<ul>
+<li><p><code>vim Hello.java</code>创建一个文件</p>
+</li>
+<li><p><code>i</code>键入插入模式：可以写具体代码<img src="../images/image-20240420122918656.png" alt="image-20240420122918656" style="zoom:33%;" /></p>
+</li>
+<li><p>存盘退出：要进入命令行模式</p>
+<ul>
+<li>按<code>esc</code>(回到正常模式)，<code>:wq</code><img src="../images/image-20240420123232485.png" alt="image-20240420123232485" style="zoom:33%;" /></li>
+</ul>
+<p>w(写)，q(退出))</p>
+</li>
+</ul>
+<img src="../images/image-20240420123411681.png" alt="image-20240420123411681" style="zoom:33%;" />
+
+<ul>
+<li><code>ll</code>查看当前目录下所有</li>
+<li>写好后，再次vim Hello.java会打开对应文件，:q退出</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:wq 保存并退出</span><br><span class="line">:q! 强制退出（不想保存）</span><br><span class="line">:q 退出</span><br></pre></td></tr></table></figure>
+
+<img src="../images/image-20240420124746447.png" alt="image-20240420124746447" style="zoom:33%;" />
+
+<hr>
+<p><img src="/../images/image-20240420125933905.png" alt="image-20240420125933905"></p>
+<p>关机重启前，先<code>sync</code></p>
+<p>用户</p>
+<p>logout关闭连接（远程登陆下有效</p>
+<hr>
+<h1 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h1><h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><img src="../images/image-20240420130713447.png" alt="image-20240420130713447" style="zoom:50%;" />
+
+<p>1.添加用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd 名</span><br></pre></td></tr></table></figure>
+
+<p>E.G.:<img src="../images/image-20240420131204862.png" alt="image-20240420131204862" style="zoom:50%;" /></p>
+<p>家目录下自动创建对应的用户目录<img src="../images/image-20240420131308901.png" alt="image-20240420131308901" style="zoom:33%;" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop1 home]# adduser -d /home/rinrin/ purin4        //指定目录</span><br><span class="line">[root@hadoop1 home]# passwd purin4   //设置密码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[purin4@hadoop1 ~]$ pwd</span><br><span class="line">/home/rinrin/</span><br><span class="line">查看当前目录</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><img src="../images/image-20240420133053508.png" alt="image-20240420133053508" style="zoom:33%;" />断开或连接</li>
+</ul>
+<p>2.删除用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userdel 名  //删除用户，但保留家目录</span><br><span class="line">userdel -r 名 //删除及家目录</span><br></pre></td></tr></table></figure>
+
+<p>3.查询用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id 名</span><br><span class="line"></span><br><span class="line">whoami   //当前用户</span><br></pre></td></tr></table></figure>
+
+<p>4.切换用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su xxx  //环境还是原来的用户</span><br><span class="line">su - xxx //连环境也切换了</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop1 home]# su purin1</span><br><span class="line">[purin1@hadoop1 home]$ pwd</span><br><span class="line">/home</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop1 home]# su - purin1</span><br><span class="line">[purin1@hadoop1 ~]$ pwd</span><br><span class="line">/home/purin1</span><br></pre></td></tr></table></figure>
+
+<h2 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h2><img src="../images/image-20240420135346982.png" alt="image-20240420135346982" style="zoom:33%;" />
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd xxx//创建组</span><br><span class="line">groupdel xxx//delete</span><br><span class="line">usermod -g xxx//修改用户的组</span><br></pre></td></tr></table></figure>
+
+<p>ps:我发现linux指令好贱啊，，虽然创建用户成功了但就是要给我一个提醒，让我以为没创建成功，转身去删了&#x2F;var&#x2F;mail&#x2F;purin2，，，，，其实不用管他<img src="../images/image-20240420140532295.png" alt="image-20240420140532295" style="zoom: 50%;" /></p>
+<img src="../images/image-20240420140843455.png" alt="image-20240420140843455" style="zoom:33%;" />
+
+<p>用谁登录就会切换到对应的用户目录</p>
+<h2 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h2><h3 id="etc-passwd"><a href="#etc-passwd" class="headerlink" title="&#x2F;etc&#x2F;passwd"></a>&#x2F;etc&#x2F;passwd</h3><p>用户的配置文件<img src="../images/image-20240420141818274.png" alt="image-20240420141818274" style="zoom:50%;" /></p>
+<h3 id="etc-group"><a href="#etc-group" class="headerlink" title="&#x2F;etc&#x2F;group"></a>&#x2F;etc&#x2F;group</h3><p>组的配置文件</p>
+<h3 id="etc-shadow"><a href="#etc-shadow" class="headerlink" title="&#x2F;etc&#x2F;shadow"></a>&#x2F;etc&#x2F;shadow</h3><p>口令的配置文件(密码)</p>
+<hr>
+<h1 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h1><ul>
+<li><p>&#96;<img src="../images/image-20240420143933712.png" alt="image-20240420143933712" style="zoom:50%;" /></p>
+</li>
+<li><p>vim &#x2F;etc&#x2F;inittab&#96;<img src="../images/image-20240420143025655.png" alt="image-20240420143025655" style="zoom:33%;" />可知linux默认处于5运行级别(图形界面)</p>
+</li>
+<li><p>init xxx(xxx∈[0,6])切换运行等级</p>
+</li>
+</ul>
+<h3 id="找回密码"><a href="#找回密码" class="headerlink" title="找回密码"></a>找回密码</h3><ul>
+<li>先切换到单用户模式（因为root登录不要密码），利用root身份去修改密码</li>
+</ul>
+<img src="../images/image-20240420144308263.png" alt="image-20240420144308263" style="zoom:33%;" />
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2024/04/01/%E5%8F%8C%E6%8C%87%E9%92%88/"
+      title="双指针"
+     >
+
+    <p class="title-text">
+      
+        双指针
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 purin<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
